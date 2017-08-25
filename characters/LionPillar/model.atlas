@@ -1,0 +1,69 @@
+
+tex.png
+size: 340,162
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fx0
+  rotate: true
+  xy: 163, 58
+  size: 103, 137
+  orig: 103, 137
+  offset: 0, 0
+  index: -1
+shishi
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+yan0
+  rotate: true
+  xy: 291, 7
+  size: 23, 26
+  orig: 43, 41
+  offset: 11, 8
+  index: -1
+yan1
+  rotate: true
+  xy: 302, 32
+  size: 39, 37
+  orig: 43, 41
+  offset: 3, 4
+  index: -1
+yan2
+  rotate: true
+  xy: 253, 14
+  size: 42, 36
+  orig: 43, 41
+  offset: 1, 5
+  index: -1
+yan3
+  rotate: true
+  xy: 302, 118
+  size: 43, 37
+  orig: 43, 41
+  offset: 0, 4
+  index: -1
+yan4
+  rotate: true
+  xy: 302, 73
+  size: 43, 37
+  orig: 43, 41
+  offset: 0, 4
+  index: -1
+yan5
+  rotate: false
+  xy: 163, 15
+  size: 43, 41
+  orig: 43, 41
+  offset: 0, 0
+  index: -1
+yan6
+  rotate: false
+  xy: 208, 15
+  size: 43, 41
+  orig: 43, 41
+  offset: 0, 0
+  index: -1

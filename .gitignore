@@ -1,0 +1,9 @@
+dev/
+*_tmp/
+.vscode/
+*.zip
+*.rar
+*.meta
+*.bak
+*.DS_Store
+~$*

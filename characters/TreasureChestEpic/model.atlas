@@ -1,0 +1,41 @@
+
+tex.png
+size: 108,292
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TreasureChestCommon_1
+  rotate: false
+  xy: 54, 2
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+TreasureChestCommon_2
+  rotate: false
+  xy: 2, 248
+  size: 97, 42
+  orig: 97, 42
+  offset: 0, 0
+  index: -1
+TreasureChestCommon_3
+  rotate: true
+  xy: 54, 44
+  size: 80, 52
+  orig: 80, 52
+  offset: 0, 0
+  index: -1
+TreasureChestCommon_4
+  rotate: true
+  xy: 2, 4
+  size: 120, 50
+  orig: 120, 50
+  offset: 0, 0
+  index: -1
+TreasureChestCommon_5
+  rotate: true
+  xy: 2, 126
+  size: 120, 90
+  orig: 120, 90
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,3 @@
+spine demote to cocos3.9
+
+lua luaconf.h reset LUA_API

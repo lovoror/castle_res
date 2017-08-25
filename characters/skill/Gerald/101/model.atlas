@@ -1,0 +1,20 @@
+
+tex.png
+size: 50,84
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+door
+  rotate: false
+  xy: 30, 36
+  size: 18, 46
+  orig: 18, 46
+  offset: 0, 0
+  index: -1
+kuosanjian
+  rotate: false
+  xy: 2, 2
+  size: 26, 80
+  orig: 26, 80
+  offset: 0, 0
+  index: -1

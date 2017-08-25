@@ -1,0 +1,27 @@
+
+tex.png
+size: 234,57
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+paojia
+  rotate: false
+  xy: 101, 4
+  size: 81, 52
+  orig: 81, 52
+  offset: 0, 0
+  index: -1
+paotong
+  rotate: true
+  xy: 1, 1
+  size: 55, 98
+  orig: 55, 98
+  offset: 0, 0
+  index: -1
+paotong2
+  rotate: false
+  xy: 184, 11
+  size: 49, 45
+  orig: 49, 45
+  offset: 0, 0
+  index: -1

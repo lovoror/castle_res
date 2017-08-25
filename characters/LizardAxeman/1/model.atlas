@@ -1,0 +1,13 @@
+
+tex.png
+size: 42,60
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+wuqi
+  rotate: false
+  xy: 1, 1
+  size: 40, 58
+  orig: 40, 58
+  offset: 0, 0
+  index: -1

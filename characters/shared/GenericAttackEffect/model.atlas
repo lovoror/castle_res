@@ -1,0 +1,20 @@
+
+tex.png
+size: 139,132
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0
+  rotate: false
+  xy: 1, 11
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+1
+  rotate: true
+  xy: 1, 1
+  size: 8, 137
+  orig: 8, 137
+  offset: 0, 0
+  index: -1

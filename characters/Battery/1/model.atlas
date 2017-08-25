@@ -1,0 +1,83 @@
+
+tex.png
+size: 273,104
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fx1
+  rotate: false
+  xy: 53, 53
+  size: 47, 50
+  orig: 47, 50
+  offset: 0, 0
+  index: -1
+fx2
+  rotate: true
+  xy: 1, 1
+  size: 49, 47
+  orig: 49, 47
+  offset: 0, 0
+  index: -1
+fx3
+  rotate: false
+  xy: 1, 52
+  size: 50, 51
+  orig: 50, 51
+  offset: 0, 0
+  index: -1
+fx4
+  rotate: false
+  xy: 102, 56
+  size: 48, 47
+  orig: 48, 47
+  offset: 0, 0
+  index: -1
+fx5
+  rotate: true
+  xy: 50, 5
+  size: 45, 41
+  orig: 45, 41
+  offset: 0, 0
+  index: -1
+fx6
+  rotate: true
+  xy: 93, 6
+  size: 45, 41
+  orig: 45, 41
+  offset: 0, 0
+  index: -1
+paodan_0
+  rotate: false
+  xy: 152, 59
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+paodan_1
+  rotate: false
+  xy: 198, 59
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+paodan_2
+  rotate: false
+  xy: 136, 10
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+paodan_3
+  rotate: false
+  xy: 182, 13
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+paodan_4
+  rotate: false
+  xy: 228, 13
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
