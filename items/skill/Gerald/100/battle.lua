@@ -102,13 +102,13 @@ function C:_setOn()
 	CBattleAttribute.setPercentageDEF(attPtr, CBattleAttribute.getPercentageDEF(attPtr) + self.defPercentageAdd);
 
 	local sdPtr = CSharedData.create();
-	CSharedData.setSharedData(sdPtr, "num", tostring(3 + math.floor((lv - 1) / 4)));
-	--CSharedData.setSharedData(sdPtr, "num", "1");
+	CSharedData.setData(sdPtr, "num", tostring(3 + math.floor((lv - 1) / 4)));
+	--CSharedData.setData(sdPtr, "num", "1");
 
-	CSharedData.setSharedData(sdPtr, "front", "true");
+	CSharedData.setData(sdPtr, "front", "true");
 	self.frontBulletPtr = CBullet.createBullet(CItem.getRes(self.itemPtr), self.entityPtr, self:_createBehaviorController(), self.itemPtr, 0, CChapterScene.getEffectAnterior1LayerPtr(), sdPtr);
 
-	CSharedData.setSharedData(sdPtr, "front", "false");
+	CSharedData.setData(sdPtr, "front", "false");
 	self.backBulletPtr = CBullet.createBullet(CItem.getRes(self.itemPtr), self.entityPtr, self:_createBehaviorController(), self.itemPtr, 0, CChapterScene.getEffectPosteriorLayerPtr(), sdPtr);
 
 	CSharedData.free(sdPtr);

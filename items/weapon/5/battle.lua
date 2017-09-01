@@ -68,7 +68,7 @@ function C:preBattle(time)
 				CBulletBehaviorController.setMATFactor(ptr, self.lv * 0.5, 0.3 + self.lv * 0.05);
 
 				local sdPtr = CSharedData.create();
-				CSharedData.setSharedData(sdPtr, "number", self.lv);
+				CSharedData.setData(sdPtr, "number", self.lv);
 
 				local bulletPtr = CBullet.createBullet(CItem.getRes(itemPtr), CItem.getEntityPtr(itemPtr), ptr, itemPtr, 0, nil, sdPtr);
 

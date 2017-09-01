@@ -13,7 +13,7 @@ function C:start(itemPtr)
 	CBulletBehaviorController.setDoneAction(ptr, true);
 
 	local sdPtr = CSharedData.create();
-	CSharedData.setSharedData(sdPtr, "die", "true");
+	CSharedData.setData(sdPtr, "die", "true");
 
 	CBullet.createBullet(head.."/Lighting", entityPtr, ptr, nil, 0, CChapterScene.getDynamicLightingLayerPtr(), sdPtr);
 
