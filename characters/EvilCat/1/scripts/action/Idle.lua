@@ -56,7 +56,7 @@ function C:_init()
 	local len = sx * self.MAX_DISTANCE;
 	local ex = px + cosValue * len;
 	local ey = py + sinValue * len;
-	if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+	if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 		ex = px + px - ex;
 	end
 	local result, hx, hy = CTileMap.collisionLine(CChapterScene.getTileMapPtr(), px, py, ex, ey, false, false);

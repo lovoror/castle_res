@@ -25,7 +25,7 @@ function C:start(itemPtr)
 
 			local px, py, sx, sy = CGameAction.getLabelTRS(actionPtr, 0, false);
 
-			if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+			if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 				tx = px + px - tx;
 			end
 

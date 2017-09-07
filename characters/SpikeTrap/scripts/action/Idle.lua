@@ -156,7 +156,7 @@ function C:_init()
 		CEntity.setBodyShapeEnabled(entityPtr, false);
 
 		local halfW = self.baseWidth * self.maxNum + self.gap * (self.maxNum - 1) * 0.5;
-		CEntity.setBodyShape(entityPtr, CBodyShapeTypeEnum.BOX, -halfW, 0.0, halfW, self.baseHeight, 1.0, 1.0);
+		CEntity.setBodyShape(entityPtr, CBodyShapeType.BOX, -halfW, 0.0, halfW, self.baseHeight, 1.0, 1.0);
 	end
 
 	self.step = 0;

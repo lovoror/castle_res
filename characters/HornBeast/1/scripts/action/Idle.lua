@@ -83,7 +83,7 @@ function C:_init()
 	self.bodyHeight = h;
 
 	local a = math.rad(10.0);
-	if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+	if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 		self.angle = self.angle + a;
 	else
 		self.angle = self.angle - a;
@@ -180,7 +180,7 @@ function C:_motion(time)
 
 		local angleAdd;
 		local rot;
-		if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+		if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 			local a;
 			if self.angle < 0.0 then
 				a = -math.pi - self.angle;

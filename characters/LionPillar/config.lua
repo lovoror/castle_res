@@ -44,7 +44,7 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/1");
-	CCharacterData.setBodyType(characterDataPtr, CBodyTypeEnum.ALL);
+	CCharacterData.setBodyType(characterDataPtr, CBodyType.ALL);
 	CCharacterData.setMass(characterDataPtr, 0.0);
 
 	self:createIdle();

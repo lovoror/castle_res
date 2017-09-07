@@ -310,7 +310,7 @@ function C:_setChangeDirTask()
 	self.dirCondPtr = self:createCPtrs(CAIDirectionCondition);
 	CAIDirectionCondition.setRange(self.dirCondPtr, 5.0);
 	self.standCondPtr = self:createCPtrs(CAIPhysicsStateCondition);
-	CAIPhysicsStateCondition.setState(self.standCondPtr, CPhysicsStateEnum.STAND);
+	CAIPhysicsStateCondition.setState(self.standCondPtr, CPhysicsState.STAND);
 
 	local groupTaskPtr = self:createCPtrs(CAISequenceGroupTask);
 
@@ -466,7 +466,7 @@ function C:attacking(attackDataPtr)
 		self:_open();
 
         local entityPtr = self.entityPtr;
-		local id = CChapterScene.getLootItemID(CEntity.getCharacterID(entityPtr), CLootItemFiltrationTypeEnum.SELF_PLAYER, false);
+		local id = CChapterScene.getLootItemID(CEntity.getCharacterID(entityPtr), CLootItemFiltrationType.SELF_PLAYER, false);
 		if id > 0 then
 			CItemManager.acquireItem(selfPtr, id, 1, false);
 
@@ -497,7 +497,7 @@ function C:executeSync(bytesPtr)
 
 			self:_open();
 
-			local id = CChapterScene.getLootItemID(CEntity.getCharacterID(entityPtr), CLootItemFiltrationTypeEnum.SELF_PLAYER, false);
+			local id = CChapterScene.getLootItemID(CEntity.getCharacterID(entityPtr), CLootItemFiltrationType.SELF_PLAYER, false);
 			if id > 0 then
 				local selfPtr = CPlayer.getSelfPtr();
 

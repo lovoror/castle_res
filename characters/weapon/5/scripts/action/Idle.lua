@@ -39,7 +39,7 @@ function C:start(itemPtr)
 	local halfH = h * 0.7 * 0.5;
 	self.collW = w * 0.95;
 	self.collH = h * 0.95;
-	CEntity.setBodyShape(entityPtr, CBodyShapeTypeEnum.BOX, -halfW, -halfH, halfW, halfH, 1.0, 1.0);
+	CEntity.setBodyShape(entityPtr, CBodyShapeType.BOX, -halfW, -halfH, halfW, halfH, 1.0, 1.0);
 
 	CGameNode.addChild(CGameAction.getDisplayPtr(actionPtr), self.disPtr);
 end

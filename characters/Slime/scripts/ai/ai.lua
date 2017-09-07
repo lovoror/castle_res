@@ -21,7 +21,7 @@ function C:awake(executorPtr)
 	self.unctrlCondPtr = self:createCPtrs(CAIUncontrollableCondition);
 
 	self.standCondPtr = self:createCPtrs(CAIPhysicsStateCondition);
-	CAIPhysicsStateCondition.setState(self.standCondPtr, CPhysicsStateEnum.STAND);
+	CAIPhysicsStateCondition.setState(self.standCondPtr, CPhysicsState.STAND);
 
 	local waitTaskPtr = self:createCPtrs(CAIEmptyTask);
 	CAIEmptyTask.setTime(waitTaskPtr, 0.5, 0.5);
@@ -63,13 +63,13 @@ function C:tick(time)
 					local isBreak = false;
 
 					if self.step == self.STEP_MOVE then
-						if self.dir == CDirectionEnum.LEFT then
+						if self.dir == CDirection.LEFT then
 							isBreak = hx < 0.0 or px <= 0.0;
 						else
 							isBreak = hx > 0.0 or px >= self.maxX;
 						end
 					else
-						if self.dir == CDirectionEnum.RIGHT then
+						if self.dir == CDirection.RIGHT then
 							isBreak = hx < 0.0 or px <= 0.0;
 						else
 							isBreak = hx > 0.0 or px >= self.maxX;
@@ -95,7 +95,7 @@ function C:tick(time)
 				self.startX = x;
 				--CAIMoveTask.setBackReverseAnimation(elf.moveTaskPtr, false);
 
-				if self.dir == CDirectionEnum.LEFT then
+				if self.dir == CDirection.LEFT then
 					CAIMoveTask.setMoveTo(self.moveTaskPtr, true, x - self.distance, y);
 				else
 					CAIMoveTask.setMoveTo(self.moveTaskPtr, true, x + self.distance, y);
@@ -112,7 +112,7 @@ function C:tick(time)
 				self.startX = x;
 				--CAIMoveTask.setBackReverseAnimation(elf.moveTaskPtr, true);
 
-				if self.dir == CDirectionEnum.LEFT then
+				if self.dir == CDirection.LEFT then
 					CAIMoveTask.setMoveTo(self.moveTaskPtr, true, x + self.distance, y);
 				else
 					CAIMoveTask.setMoveTo(self.moveTaskPtr, true, x - self.distance, y);

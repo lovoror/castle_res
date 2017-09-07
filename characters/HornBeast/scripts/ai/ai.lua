@@ -207,14 +207,14 @@ function C:_skill0MoveStartHandler(ptr)
 	CAIMoveTask.setMoveTo(self.skill0AtkTaskPtr, true, toX, y);
 
 	if dir == -1 then
-		if CEntity.getDirection(self.entityPtr) == CDirectionEnum.LEFT then
+		if CEntity.getDirection(self.entityPtr) == CDirection.LEFT then
 			CAIDirectionTask.setMode(self.skill0DirTaskPtr, CAIDirectionTask.ORIENTATION_RIGHT);
 			CAIObject.setEnabled(self.skill0DirTaskPtr, true);
 		else
 			CAIObject.setEnabled(self.skill0DirTaskPtr, false);
 		end
 	else
-		if CEntity.getDirection(self.entityPtr) == CDirectionEnum.RIGHT then
+		if CEntity.getDirection(self.entityPtr) == CDirection.RIGHT then
 			CAIDirectionTask.setMode(self.skill0DirTaskPtr, CAIDirectionTask.ORIENTATION_LEFT);
 			CAIObject.setEnabled(self.skill0DirTaskPtr, true);
 		else
@@ -238,7 +238,7 @@ function C:_skill1StartHandler(ptr)
 	if CisNullptr(targetPtr) then
 		local minX, maxX;
 		local x, y = CEntity.getPosition(self.entityPtr);
-		if CEntity.getDirection(self.entityPtr) == CDirectionEnum.LEFT then
+		if CEntity.getDirection(self.entityPtr) == CDirection.LEFT then
 			minX =self.moveMinX;
 			maxX = x;
 		else
@@ -307,7 +307,7 @@ function C:_rndWaitTickHandler(ptr)
 		local toY = self.moveMinY + (self.moveMaxY - self.moveMinY) * math.random();
 		local a = math.atan(self.eyeCurY - self.eyeOriginY, self.eyeCurX - self.eyeOriginX);
 		local a2 = math.atan(toY - py, toX - px);
-		if dir == CDirectionEnum.LEFT then
+		if dir == CDirection.LEFT then
 			if a2 < 0.0 then
 				a2 = -math.pi - a2;
 			else

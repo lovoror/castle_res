@@ -50,7 +50,7 @@ function C:tick(time)
 			self.v0 = self.v0 - vt;
 			s = s / time;
 
-			if self.dir == CDirectionEnum.LEFT then
+			if self.dir == CDirection.LEFT then
 				CEntity.appendInstantVelocity(entityPtr, -s, 0.0);
 			else
 				CEntity.appendInstantVelocity(entityPtr, s, 0.0);

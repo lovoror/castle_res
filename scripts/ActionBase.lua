@@ -108,7 +108,7 @@ function C:start(itemPtr)
 
 	local hw = self.COLL_W * 0.5;
 	
-	CEntity.setBodyShape(entityPtr, CBodyShapeTypeEnum.BOX, -hw, 0.0, hw, self.COLL_H, 1.0, 1.0);
+	CEntity.setBodyShape(entityPtr, CBodyShapeType.BOX, -hw, 0.0, hw, self.COLL_H, 1.0, 1.0);
 	CEntity.setUpdateBodyShapeEnabled(entityPtr, false);
 
 	self.isAttacked = false;
@@ -165,10 +165,10 @@ end
 
 function C:_add(targetPtr, value, type)
 	if value ~= 0 then
-		if type == CBattleNumberTypeEnum.HP then
+		if type == CBattleNumberType.HP then
 			self.changedHP = value;
 			CEntity.setHP(targetPtr, CEntity.getHP(targetPtr) + value);
-		elseif type == CBattleNumberTypeEnum.MP then
+		elseif type == CBattleNumberType.MP then
 			self.changedMP = value;
 			CEntity.setMP(targetPtr, CEntity.getMP(targetPtr) + value);
 		end

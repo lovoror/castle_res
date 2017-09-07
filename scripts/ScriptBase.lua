@@ -175,7 +175,7 @@ function toint(x)
 	return math.tointeger(tonumber(x));
 end
 
--- â†“â†’ X
+-- ¡ı¡ú X
 function createInstructionFormula_DFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -196,7 +196,7 @@ function createInstructionFormula_DFX(x)
 	return formulaPtr;
 end
 
--- â†’â†“â†’ X
+-- ¡ú¡ı¡ú X
 function createInstructionFormula_FDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -222,7 +222,7 @@ function createInstructionFormula_FDFX(x)
 	return formulaPtr;
 end
 
--- â†â†“â†’ X
+-- ¡û¡ı¡ú X
 function createInstructionFormula_BDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -248,7 +248,7 @@ function createInstructionFormula_BDFX(x)
 	return formulaPtr;
 end
 
--- â†’â†“â†â†’ X
+-- ¡ú¡ı¡û¡ú X
 function createInstructionFormula_FDBFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -291,7 +291,7 @@ function setDefaultInjuredEffect(attackDataPtr)
 		local buffPtr = nil;
 
 		local type = CAttackData.getType(attackDataPtr);
-		if type == CBattleNumberTypeEnum.HP then
+		if type == CBattleNumberType.HP then
 			if value < 0 then
 				buffPtr = CBuff.create(CEntity.getID(sufferPtr), 2, 0.4);
 				CBuff.setSharedData(buffPtr, "r", "1.0");
@@ -303,7 +303,7 @@ function setDefaultInjuredEffect(attackDataPtr)
 				CBuff.setSharedData(buffPtr, "g", "1.0");
 				CBuff.setSharedData(buffPtr, "b", "0.5");
 			end
-		elseif type == CBattleNumberTypeEnum.MP then
+		elseif type == CBattleNumberType.MP then
 			if value > 0 then
 				buffPtr = CBuff.create(CEntity.getID(sufferPtr), 2, 0.8);
 				CBuff.setSharedData(buffPtr, "r", "0.5");
@@ -584,20 +584,20 @@ function showChangedHPMPEffect(entityPtr, changedHP, changedMP)
 	local adPtr = nil;
 
 	if changedHP ~= 0 then
-		showBattleNumber(entityPtr, changedHP, CBattleNumberTypeEnum.HP);
+		showBattleNumber(entityPtr, changedHP, CBattleNumberType.HP);
 
-		adPtr = CAttackData.create(entityPtr, entityPtr, changedHP, CBattleNumberTypeEnum.HP, 0.0, 0.0);
+		adPtr = CAttackData.create(entityPtr, entityPtr, changedHP, CBattleNumberType.HP, 0.0, 0.0);
 		setDefaultInjuredEffect(adPtr);
 	end
 
 	if changedMP ~= 0 then
-		showBattleNumber(entityPtr, changedMP, CBattleNumberTypeEnum.MP);
+		showBattleNumber(entityPtr, changedMP, CBattleNumberType.MP);
 
 		if adPtr == nil then
-			adPtr = CAttackData.create(entityPtr, entityPtr, changedMP, CBattleNumberTypeEnum.MP, 0.0, 0.0);
+			adPtr = CAttackData.create(entityPtr, entityPtr, changedMP, CBattleNumberType.MP, 0.0, 0.0);
 		else
 			CAttackData.setValue(adPtr, changedMP);
-			CAttackData.setType(adPtr, CBattleNumberTypeEnum.MP);
+			CAttackData.setType(adPtr, CBattleNumberType.MP);
 		end
 		setDefaultInjuredEffect(adPtr);
 	end

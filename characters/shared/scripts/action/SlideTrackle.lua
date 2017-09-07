@@ -1,7 +1,7 @@
 local C = registerClassAuto(getClass(ACTION_PACKAGE, ACTION_BASE));
 
 function C:attacked(attackDataPtr)
-	if not self.isAttacked and CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberTypeEnum.HP then
+	if not self.isAttacked and CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP then
 		self.isAttacked = true;
 	end
 end

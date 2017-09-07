@@ -23,7 +23,7 @@ function C:awake(executorPtr)
 	local actionControllerPtr = CEntity.getActionControllerPtr(entityPtr);
 	self.actionControllerPtr = actionControllerPtr;
 
-	CEntity.setOneWayType(entityPtr, COneWayTypeEnum.UP);
+	CEntity.setOneWayType(entityPtr, COneWayType.UP);
 	CEntity.setUpdateBodyShapeEnabled(entityPtr, false);
 	CGameActionController.setActionUpdateEnabled(actionControllerPtr, false);
 	self:_setBodyShape();
@@ -60,7 +60,7 @@ function C:_motion(time)
 				self.state = self.STATE_DROP;
 				self.curActionPtr = CGameActionController.changeAction(self.actionControllerPtr, CGameAction.ACTION_SKILL.."0", false, true);
 				self.curTime = 0.0;
-				CEntity.setBodyShape(self.entityPtr, CBodyShapeTypeEnum.NONE);
+				CEntity.setBodyShape(self.entityPtr, CBodyShapeType.NONE);
 				return time - d;
 			end
 		end
@@ -112,5 +112,5 @@ function C:_collisionTopHandler(entityPtr)
 end
 
 function C:_setBodyShape()
-	CEntity.setBodyShape(self.entityPtr, CBodyShapeTypeEnum.BOX, -40.0, 0.0, 40.0, 40.0, 1.0, 1.0);
+	CEntity.setBodyShape(self.entityPtr, CBodyShapeType.BOX, -40.0, 0.0, 40.0, 40.0, 1.0, 1.0);
 end

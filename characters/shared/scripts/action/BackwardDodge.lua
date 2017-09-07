@@ -36,7 +36,7 @@ function C:tick(time)
 			local x = self.VELOCITY * time;
 			self.curDis = self.curDis + x;
 			
-			if self.dir == CDirectionEnum.LEFT then
+			if self.dir == CDirection.LEFT then
 				CEntity.appendInstantVelocity(entityPtr, self.VELOCITY, 0);
 			else
 				CEntity.appendInstantVelocity(entityPtr, -self.VELOCITY, 0);

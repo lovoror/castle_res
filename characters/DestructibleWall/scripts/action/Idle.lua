@@ -22,7 +22,7 @@ function C:start(itemPtr)
 end
 
 function C:suffered(attackDataPtr)
-    if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberTypeEnum.HP and self.hp > 0 then
+    if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP and self.hp > 0 then
         self.hp = self.hp - 1;
         if self.hp == 0 then
 			if CChapterScene.isNetwork() then

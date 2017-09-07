@@ -13,7 +13,7 @@ function C:start(itemPtr)
 	local entityPtr = CGameAction.getEntityPtr(self.actionPtr);
 	self.entityPtr = entityPtr;
 	
-	CEntity.setBodyShape(entityPtr, CBodyShapeTypeEnum.BOX, -self.HALF_W, 0.0, self.HALF_W, self.H, 1.0, 1.0);
+	CEntity.setBodyShape(entityPtr, CBodyShapeType.BOX, -self.HALF_W, 0.0, self.HALF_W, self.H, 1.0, 1.0);
 	CEntity.setUpdateBodyShapeEnabled(entityPtr, false);
 
 	self.isAttacked = false;

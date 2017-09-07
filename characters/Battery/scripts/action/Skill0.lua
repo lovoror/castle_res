@@ -32,7 +32,7 @@ function C:start(itemPtr)
 
 		local entityRotation = -math.rad(CEntity.getRotation(entityPtr));
 
-		--if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+		--if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 			--tx = px + px - tx;
 		--end
 
@@ -60,7 +60,7 @@ function C:start(itemPtr)
 				end
 			end
 
-			--if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+			--if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 			--	a = math.pi - a;
 			--end
 

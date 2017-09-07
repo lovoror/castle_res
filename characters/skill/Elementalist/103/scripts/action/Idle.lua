@@ -13,7 +13,7 @@ function C:attacked(attackDataPtr)
 end
 
 function C:suffered(attackDataPtr)
-	if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberTypeEnum.HP then
+	if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP then
 		self:_setDie(CAttackData.getAttackerPtr(attackDataPtr));
 	end
 end
@@ -95,7 +95,7 @@ function C:tick(time)
 			self.v0 = self.v0 - vt;
 			s = s / time;
 
-			if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+			if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 				CEntity.appendInstantVelocity(entityPtr, -s, 0.0);
 			else
 				CEntity.appendInstantVelocity(entityPtr, s, 0.0);

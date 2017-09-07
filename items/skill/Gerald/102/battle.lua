@@ -24,7 +24,7 @@ end
 
 function C:useCondition()
 	if CEntity.isHost(self.entityPtr) and CEntity.getMP(self.entityPtr) >= CItem.getConsumeMP(self.itemPtr) then
-		return CEntity.getPhysicsState(self.entityPtr) ~= CPhysicsStateEnum.STAND and CEntity.getCurrentActionTag(self.entityPtr) ~= CGameAction.ACTION_HURT
+		return CEntity.getPhysicsState(self.entityPtr) ~= CPhysicsState.STAND and CEntity.getCurrentActionTag(self.entityPtr) ~= CGameAction.ACTION_HURT
 	else
 		return false;
 	end
@@ -52,7 +52,7 @@ end
 function C:tick(time)
 	if self.isOn then
 		if CEntity.isHost(self.entityPtr) then
-			if (not CItem.isSkillButtonPressing(self.itemPtr)) or CEntity.getPhysicsState(self.entityPtr) == CPhysicsStateEnum.STAND or CEntity.getCurrentActionTag(self.entityPtr) == CGameAction.ACTION_HURT or CEntity.isDie(self.entityPtr) then
+			if (not CItem.isSkillButtonPressing(self.itemPtr)) or CEntity.getPhysicsState(self.entityPtr) == CPhysicsState.STAND or CEntity.getCurrentActionTag(self.entityPtr) == CGameAction.ACTION_HURT or CEntity.isDie(self.entityPtr) then
 				self:_setOff();
 			end
 		end

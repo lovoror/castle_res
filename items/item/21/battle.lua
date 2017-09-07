@@ -10,7 +10,7 @@ function C:suffering(attackDataPtr)
 	self.valid = false;
 
 	if CEntity.isHost(self.entityPtr) and CItem.getCount(self.itemPtr) > 0 then
-		if CAttackData.getType(attackDataPtr) == CBattleNumberTypeEnum.HP then
+		if CAttackData.getType(attackDataPtr) == CBattleNumberType.HP then
 			local value = CAttackData.getValue(attackDataPtr);
 			if value < 0 and -value >= CEntity.getHP(self.entityPtr) then
 				rst = CCollisionResult.DAMAGE_INVALID;

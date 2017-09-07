@@ -118,7 +118,7 @@ function C:_createBehaviorController()
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setFollowOwner(ptr, true);
 	CBulletBehaviorController.setBindSpineBone(ptr, "bone_program");
-	CBulletBehaviorController.setDirection(ptr, CDirectionEnum.RIGHT);
+	CBulletBehaviorController.setDirection(ptr, CDirection.RIGHT);
 
 	return ptr;
 end

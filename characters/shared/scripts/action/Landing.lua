@@ -22,7 +22,7 @@ end
 function C:isDone(result)
 	local entityPtr = self.entityPtr;
 
-	if CEntity.getPhysicsState(entityPtr) == CPhysicsStateEnum.STAND then
+	if CEntity.getPhysicsState(entityPtr) == CPhysicsState.STAND then
 		local x, y = CEntity.getResistanceVelocity(entityPtr) ;
 		if x == 0 then
 			return false, false;

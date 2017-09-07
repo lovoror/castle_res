@@ -19,7 +19,7 @@ function C:isDone(result)
 	if x ~= 0.0 or y ~= 0.0 then
 		return true, false;
 	else
-		if CEntity.getPhysicsState(entityPtr) == CPhysicsStateEnum.STAND then
+		if CEntity.getPhysicsState(entityPtr) == CPhysicsState.STAND then
 			return false, false;
 		else
 			local x, y = CEntity.getGravityScale(entityPtr) ;

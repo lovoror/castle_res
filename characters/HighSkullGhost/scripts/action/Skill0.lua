@@ -54,7 +54,7 @@ end
 function C:_calculateAngle()
 	local px, py = CEntity.getPosition(self.entityPtr);
 	local tx = self.targetX;
-	if CEntity.getDirection(self.entityPtr) == CDirectionEnum.LEFT then
+	if CEntity.getDirection(self.entityPtr) == CDirection.LEFT then
 		tx = px + px - tx;
 	end
 	local dx = tx - px;

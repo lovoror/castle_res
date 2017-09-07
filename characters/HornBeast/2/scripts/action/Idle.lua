@@ -13,7 +13,7 @@ function C:attacked(attackDataPtr)
 end
 
 function C:suffered(attackDataPtr)
-	if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberTypeEnum.HP then
+	if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP then
 		self:_setDie(CAttackData.getAttackerPtr(attackDataPtr));
 	end
 end

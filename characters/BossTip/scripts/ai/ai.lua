@@ -16,12 +16,12 @@ function C:awake(actionPtr)
 		self.id = toint(value);
 	end
 
-	self.type = CBossTipTypeEnum.GOLD;
+	self.type = CBossTipType.GOLD;
 	local value = CEntity.getSharedData(self.entityPtr, self.KEY_TYPE);
 	if value ~= "" then
 		local type = toint(value);
 		if type == "1" then
-			self.type = CBossTipTypeEnum.SILVER;
+			self.type = CBossTipType.SILVER;
 		end
 	end
 end
@@ -47,7 +47,7 @@ function C:tick(time)
 		if show then
 			CChapterScene.showBossTip(self.entityPtr, self.type);
 		else
-			CChapterScene.showBossTip(self.entityPtr, CBossTipTypeEnum.NONE);
+			CChapterScene.showBossTip(self.entityPtr, CBossTipType.NONE);
 		end
 	end
 end

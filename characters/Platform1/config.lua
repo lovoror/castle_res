@@ -4,7 +4,7 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.setCustomSync(characterDataPtr, true);
-	CCharacterData.setBodyType(characterDataPtr, CBodyTypeEnum.BLOCK);
+	CCharacterData.setBodyType(characterDataPtr, CBodyType.BLOCK);
 
 	CCharacterData.loadSound(characterDataPtr, "0", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
 

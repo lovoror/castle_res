@@ -61,7 +61,7 @@ function C:_init()
 	self.lv = lv;
 	self.maxLv = maxLv;
 
-	local flip = CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT;
+	local flip = CEntity.getDirection(entityPtr) == CDirection.LEFT;
 	self.flip = flip;
 
 	if self.isHost then

@@ -16,9 +16,9 @@ function C:tick(time)
 	if self.time <= 0.0 then
 		local entityPtr = CGameAction.getEntityPtr(self.actionPtr);
 		if math.random() < 0.5 then
-			CEntity.setDirection(entityPtr, CDirectionEnum.LEFT);
+			CEntity.setDirection(entityPtr, CDirection.LEFT);
 		else
-			CEntity.setDirection(entityPtr, CDirectionEnum.RIGHT);
+			CEntity.setDirection(entityPtr, CDirection.RIGHT);
 		end
 		
 		local px, py = CEntity.getCreatePosition(entityPtr);

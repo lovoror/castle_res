@@ -27,17 +27,17 @@ function C:start(itemPtr)
 		ix = 0.0;
 		CGameAction.setReverse(actionPtr, false);
 	elseif mode == 1 then
-		if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+		if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 			ix = -ix;
 		end
 		CGameAction.setReverse(actionPtr, false);
 	elseif mode == 2 then
-		if CEntity.getDirection(entityPtr) == CDirectionEnum.RIGHT then
+		if CEntity.getDirection(entityPtr) == CDirection.RIGHT then
 			ix = -ix;
 		end
 		CGameAction.setReverse(actionPtr, true);
 	elseif mode == 3 then
-		if CEntity.getDirection(entityPtr) == CDirectionEnum.LEFT then
+		if CEntity.getDirection(entityPtr) == CDirection.LEFT then
 			ix = -ix;
 		end
 		self.distance = iy;

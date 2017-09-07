@@ -58,14 +58,14 @@ function C:start(itemPtr)
 			CGameSprite.setSubTextureRect(ptr, 0.0, 0.0, 0.5 + halfH / w, 1.0);
 		end
 
-		--CEntity.setBodyShape(self.entityPtr, CBodyShapeTypeEnum.BOX, -halfH, -halfH, halfH, halfH, 1.0, 1.0);
-		CEntity.setBodyShape(self.entityPtr, CBodyShapeTypeEnum.NONE);
+		--CEntity.setBodyShape(self.entityPtr, CBodyShapeType.BOX, -halfH, -halfH, halfH, halfH, 1.0, 1.0);
+		CEntity.setBodyShape(self.entityPtr, CBodyShapeType.NONE);
 		CEntity.setPersistVelocity(self.entityPtr, 0.0, 0.0);
 	else
 		self.collW = w;
 		self.collH = h;
 
-		CEntity.setBodyShape(self.entityPtr, CBodyShapeTypeEnum.BOX, -0.5, -0.5, 0.5, 0.5, 1.0, 1.0);
+		CEntity.setBodyShape(self.entityPtr, CBodyShapeType.BOX, -0.5, -0.5, 0.5, 0.5, 1.0, 1.0);
 	end
 end
 

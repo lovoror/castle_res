@@ -16,7 +16,7 @@ end
 function C:tick(time)
 	local v = 500.0;
 	local x = self.cosValue * v;
-	if CEntity.getDirection(self.entityPtr) == CDirectionEnum.LEFT then
+	if CEntity.getDirection(self.entityPtr) == CDirection.LEFT then
 		x = -x;
 	end
 	CEntity.appendInstantVelocity(self.entityPtr, x, self.sinValue * v);

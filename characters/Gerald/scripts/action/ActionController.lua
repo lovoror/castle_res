@@ -2,7 +2,7 @@ local C = registerClassAuto(getClass(ACTION_CONTROLLER_PACKAGE, AACTION_CONTROLL
 
 function C:changedPhysicsState()
 	local state = CEntity.getPhysicsState(self.entityPtr);
-	if state == CPhysicsStateEnum.STAND then
+	if state == CPhysicsState.STAND then
 		CEntity.playSound(self.entityPtr, CGameResource.getCharacterSoundFile(CCharacterData.getName(CEntity.getCharacterDataPtr(self.entityPtr)), "landing"));
 	end
 end
