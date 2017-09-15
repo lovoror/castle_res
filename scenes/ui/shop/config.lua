@@ -12,9 +12,9 @@ function C:setBuyItems(shopPtr, id, diff)
         fn(7);
         fn(8);
     elseif id == "1" then
-       if diff == ChapterDifficulty.NORMAL then
+       if diff == CChapterDifficulty.NORMAL then
             --todo
-       elseif diff == ChapterDifficulty.HARD then
+       elseif diff == CChapterDifficulty.HARD then
             --todo
        end
     end
