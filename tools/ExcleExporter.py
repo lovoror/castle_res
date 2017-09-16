@@ -4,7 +4,7 @@ import sys
 import xlrd
 import json
 
-excleFilePath = "items.xlsm";
+excleFilePath = "characters.xlsm";
 exportFilePath = "";
 
 if (exportFilePath == ""):
