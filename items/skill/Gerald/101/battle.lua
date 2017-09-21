@@ -107,7 +107,7 @@ function C:_createBullet(obj)
 			CBulletBehaviorController.setSlashDamageFactor(ptr, obj.lv * 0.5, 1.0);
 
 			obj.curNum = obj.curNum + 1;
-			local bulletPtr = CBullet.createBullet(res, self.entityPtr, ptr, self.itemPtr, 0, CChapterScene.getEffectAnterior2LayerPtr());
+			local bulletPtr = CBullet.createBullet(res, self.entityPtr, ptr, self.itemPtr, 0, CChapterScene.getEffectAnteriorLayerPtr(2));
 			CEntity.setAttackEnabled(bulletPtr, false);
 			obj.bulletPtrs[obj.curNum] = bulletPtr;
 		end

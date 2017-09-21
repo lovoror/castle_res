@@ -46,13 +46,13 @@ function C:start(itemPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setFollowOwner(ptr, true);
-	CBulletBehaviorController.setDoneAction(ptr, true);
+	CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 
 	CBullet.createBullet(resHead.."Lighting", entityPtr, ptr, nil, 0, CChapterScene.getDynamicLightingLayerPtr());
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setFollowOwner(ptr, true);
-	CBulletBehaviorController.setDoneAction(ptr, true);
+	CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 
 	CBullet.createBullet(resHead.."Distortion", entityPtr, ptr, nil, 0, CChapterScene.getDistortionLayerPtr());
 end
@@ -67,7 +67,7 @@ function C:tick(time)
 			CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0, false);
 			CBulletBehaviorController.setFollowOwner(ptr, true);
 			CBulletBehaviorController.setDoneOwnerDie(ptr, true);
-			CBulletBehaviorController.setDoneAction(ptr, true);
+			CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 
 			local id = CCharacterData.getName(CEntity.getCharacterDataPtr(self.entityPtr)).."/ShootEffect";
 			CBullet.createBullet(id, self.entityPtr, ptr, nil, 0, CChapterScene.getEffectMiddleLayerPtr());

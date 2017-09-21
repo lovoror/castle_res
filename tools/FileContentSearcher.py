@@ -5,7 +5,7 @@ import sys
 #rootDir = "C:/Users/Sephiroth/Documents/Projects/Castle/res";
 #rootDir = "E:/Work/Castle/res";
 rootDir = os.getcwd() + "/../";
-keyword = "getLootItemID";
+keyword = "CBulletBehaviorController.setDoneAction";
 replace = "";
 
 findNum = 0;

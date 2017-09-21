@@ -10,7 +10,7 @@ function C:start(itemPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setFollowOwner(ptr, true);
-	CBulletBehaviorController.setDoneAction(ptr, true);
+	CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 
 	local sdPtr = CSharedData.create();
 	CSharedData.setData(sdPtr, "die", "true");

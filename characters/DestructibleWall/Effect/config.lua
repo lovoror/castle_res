@@ -4,17 +4,23 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.setCustomSync(characterDataPtr, true);
-	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Effect");
 
 	self:createIdle();
+	self:createSkill0();
 end
 
 function C:createIdle()
 	local ptr = createDefaultIdleActionData();
-	CGameActionData.setScriptName(ptr, "Idle", false);
+	CGameActionData.setResName(ptr, "shouji");
+	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
-	CGameActionData.setCollisionCamp(ptr, false, true);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr);
+end
+
+function C:createSkill0()
+	local ptr = createDefaultSkillActionData("0");
+	CGameActionData.setResName(ptr, "siwang");
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end

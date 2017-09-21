@@ -41,7 +41,7 @@ function C:preBattle(time)
 				CBulletBehaviorController.setPosition(ptr, 0);
 				CBulletBehaviorController.setFollowOwner(ptr, true);
 				CBulletBehaviorController.setDoneTime(ptr, 1.0);
-				CBulletBehaviorController.setDoneAction(ptr, true);
+				CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 
 				CBulletBehaviorController.setATKFactor(ptr, 0.0, 0.4);
 				CBulletBehaviorController.setMATFactor(ptr, 0.0, 0.0);

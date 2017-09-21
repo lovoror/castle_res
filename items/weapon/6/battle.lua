@@ -93,7 +93,7 @@ function C:preBattle(time)
 			CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0);
 			CBulletBehaviorController.setFollowOwner(ptr, true);
 			CBulletBehaviorController.setDoneAnimation(ptr, true);
-			CBulletBehaviorController.setDoneAction(ptr, true);
+			CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 			CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
 			--local scPtr = CSoundPackage.create();
 			--CSoundPackage.add(scPtr, CGameResource.getCharacterSoundFile(res, "1"));

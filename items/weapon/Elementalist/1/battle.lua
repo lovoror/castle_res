@@ -39,7 +39,7 @@ function C:preBattle(time)
 				local ptr = CBulletBehaviorController.create();
 				--CBulletBehaviorController.setFollowOwner(ptr, true);
 				--CBulletBehaviorController.setDoneAnimation(ptr, true);
-				--CBulletBehaviorController.setDoneAction(ptr, true);
+				--CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 				CBulletBehaviorController.setDoneHitCount(ptr, 1);
 				CBulletBehaviorController.setDoneHitBlock(ptr, true, false);
 				CBulletBehaviorController.setVelocity(ptr, 550.0);

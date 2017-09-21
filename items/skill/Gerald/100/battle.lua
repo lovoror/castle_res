@@ -106,7 +106,7 @@ function C:_setOn()
 	--CSharedData.setData(sdPtr, "num", "1");
 
 	CSharedData.setData(sdPtr, "front", "true");
-	self.frontBulletPtr = CBullet.createBullet(CItem.getRes(self.itemPtr), self.entityPtr, self:_createBehaviorController(), self.itemPtr, 0, CChapterScene.getEffectAnterior1LayerPtr(), sdPtr);
+	self.frontBulletPtr = CBullet.createBullet(CItem.getRes(self.itemPtr), self.entityPtr, self:_createBehaviorController(), self.itemPtr, 0, CChapterScene.getEffectAnteriorLayerPtr(1), sdPtr);
 
 	CSharedData.setData(sdPtr, "front", "false");
 	self.backBulletPtr = CBullet.createBullet(CItem.getRes(self.itemPtr), self.entityPtr, self:_createBehaviorController(), self.itemPtr, 0, CChapterScene.getEffectPosteriorLayerPtr(), sdPtr);

@@ -13,6 +13,11 @@ function C:start(itemPtr)
 	local sw, sh = CGameNode.getContentSize(disPtr);
 	local ax, ay = CGameNode.getAnchorPoint(disPtr);
 
+	self.resW = sw;
+	self.resH = sh;
+	self.anchorX = ax;
+	self.anchorY = ay;
+
 	self.collW = sw;
 	self.collH = sh;
 	self.collX = (0.5 - ax) * sw;
@@ -21,15 +26,26 @@ function C:start(itemPtr)
 	self.isHost = CEntity.isHost(self.entityPtr);
 end
 
+function C:executeSync(bytesPtr)
+	if self.hp > 0 then
+		self.hp = 0;
+		self:_doDie();
+	end
+end
+
 function C:suffered(attackDataPtr)
     if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP and self.hp > 0 then
         self.hp = self.hp - 1;
         if self.hp == 0 then
 			if CChapterScene.isNetwork() then
-				CProtocol.sendCptEntityDied(self.entityPtr);
+				CProtocol.sendCptActorActionSync(self.actionPtr, function(bytesPtr)
+					CByteArray.writeBool(bytesPtr, true);
+				end)
 			end
 
-            CEntity.setDie(self.entityPtr);
+            self:_doDie();
+		else
+			self:_doEffect(false);
         end
     end
 end
@@ -42,4 +58,36 @@ end
 
 function C:dispose()
 	return true;
+end
+
+function C:_doDie()
+	self:_doEffect(true);
+
+	CEntity.setDie(self.entityPtr);
+end
+
+function C:_doEffect(isDie)
+	local entityPtr = self.entityPtr;
+
+	local px, py = CEntity.getPosition(entityPtr);
+	local sx, sy = CEntity.getScale(entityPtr);
+	local tw = self.resW * sx;
+	local th = self.resH * sy;
+	local x = px + tw * (0.5 - self.anchorX);
+	local y = py + th * (0.5 - self.anchorY);
+
+	local ptr = CBulletBehaviorController.create();
+	CBulletBehaviorController.setPosition(ptr, -1, x, y, true);
+	CBulletBehaviorController.setDoneAnimation(ptr, true);
+
+	if isDie then CBulletBehaviorController.setInitActionTag(ptr, CGameAction.ACTION_SKILL.."0"); end
+	
+	local maxSize = math.max(tw, th);
+	local s = maxSize / 80.0;
+	if s ~= 1.0 then
+		if s > 2.0 then s = 2.0; end
+		CBulletBehaviorController.setScale(ptr, s);
+	end
+
+	CBullet.createBullet(CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)).."/Effect", entityPtr, ptr, nil, 0, CChapterScene.getEffectTopLayerPtr(0));
 end
