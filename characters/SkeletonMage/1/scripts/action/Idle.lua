@@ -456,7 +456,7 @@ function C:tick(time)
 			if not (self.breakX == nil) then
 				local ptr = CBulletBehaviorController.create();
 				CBulletBehaviorController.setPosition(ptr, 0, self.breakX , self.breakY);
-				CBulletBehaviorController.setDoneAnimation(ptr, true);
+				CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 				CBullet.createBullet(self.resHead.."/hit", self.entityPtr, ptr, nil);
 			end

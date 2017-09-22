@@ -88,7 +88,7 @@ function C:preBattle(time)
 			CBulletBehaviorController.setStartTime(ptr, time);
 			CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0);
 			CBulletBehaviorController.setFollowOwner(ptr, true);
-			CBulletBehaviorController.setDoneAnimation(ptr, true);
+			CBulletBehaviorController.setDoneActionChanged(ptr, true);
 			CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 			CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
 			local scPtr = CSoundPackage.create();
@@ -135,7 +135,7 @@ function C:preBattle(time)
 					CBulletBehaviorController.setMATFactor(ptr, 0.0, 0.45);
 				end
 				CBulletBehaviorController.setDoneHitBlock(ptr, true, false);
-				--CBulletBehaviorController.setDoneAnimation(ptr, true);
+				--CBulletBehaviorController.setDoneActionChanged(ptr, true);
 				CBulletBehaviorController.setVelocity(ptr, 600.0);
 				CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
 

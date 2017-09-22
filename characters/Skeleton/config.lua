@@ -25,7 +25,7 @@ function C:injured(attackDataPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	CBullet.createBullet(self.hurtID, CAttackData.getAttackerPtr(attackDataPtr), ptr, nil);
 

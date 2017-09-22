@@ -11,7 +11,7 @@ function C:start(itemPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	CBullet.createBullet(id, entityPtr, ptr, nil, 0, CChapterScene.getEffectPosteriorLayerPtr());
 end

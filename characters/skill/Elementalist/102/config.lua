@@ -19,7 +19,7 @@ function C:damage(attackDataPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	CBullet.createBullet(self.id.."/hit", CAttackData.getAttackerPtr(attackDataPtr), ptr, nil);
 

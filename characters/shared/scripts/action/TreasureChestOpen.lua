@@ -37,7 +37,7 @@ function C:_createBullet(time)
 	CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0);
 	CBulletBehaviorController.setStartTime(ptr, time);
 	CBulletBehaviorController.setFollowOwner(ptr, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 	CBulletBehaviorController.setGravityScale(ptr, 0.0, 0.0);
 	--CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
 

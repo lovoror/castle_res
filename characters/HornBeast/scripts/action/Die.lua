@@ -14,7 +14,7 @@ function C:start(itemPtr)
 	self.particleDissipatePtr = nil;
 
 	local ptr = CBulletBehaviorController.create();
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	CBullet.createBullet(CCharacterData.getName(CEntity.getCharacterDataPtr(self.entityPtr)).."/3", self.entityPtr, ptr, nil, 0, CChapterScene.getEffectPosteriorLayerPtr());
 end

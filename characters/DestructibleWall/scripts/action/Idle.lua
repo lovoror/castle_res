@@ -78,7 +78,7 @@ function C:_doEffect(isDie)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, -1, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	if isDie then CBulletBehaviorController.setInitActionTag(ptr, CGameAction.ACTION_SKILL.."0"); end
 	

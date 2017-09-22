@@ -63,7 +63,7 @@ end
 function C:createGenericHitEffect(attackDataPtr, x, y)
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 	CBulletBehaviorController.setAngle(ptr, 360.0 * math.random(), true);
 	CBulletBehaviorController.setScale(ptr, 1.4);
 

@@ -13,6 +13,13 @@ function C:awake(executorPtr)
 	self:_setRecord(TreasureChestLegendaryRecord);
 
 	super.awake(self, executorPtr);
+
+	local entityPtr = self.entityPtr;
+
+	local ptr = CBulletBehaviorController.create();
+	CBulletBehaviorController.setFollowOwner(ptr, true);
+	CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
+	CBullet.createBullet(CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)).."/IdleEffect", entityPtr, ptr, nil, 0, CEntity.getLayerPtr(entityPtr));
 end
 
 function C:_checkChapterSuccess()

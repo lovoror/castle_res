@@ -91,7 +91,7 @@ function C:preBattle(time)
 			CBulletBehaviorController.setStartTime(ptr, time);
 			CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0);
 			CBulletBehaviorController.setFollowOwner(ptr, true, 0.2);
-			CBulletBehaviorController.setDoneAnimation(ptr, true);
+			CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 			local entityPtr = CItem.getEntityPtr(itemPtr);
 			local baPtr = CEntity.getBattleAttributePtr(entityPtr);

@@ -25,7 +25,7 @@ function C:damage(attackDataPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, x, y, true);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 
 	local bulletPtr = CBullet.createBullet(self.id.."/hit", attackerPtr, ptr, nil);
 	if number == "1" then

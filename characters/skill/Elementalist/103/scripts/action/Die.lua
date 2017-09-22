@@ -21,7 +21,7 @@ function C:start(itemPtr)
 
 	local ptr = CBulletBehaviorController.create();
 	CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0, false);
-	CBulletBehaviorController.setDoneAnimation(ptr, true);
+	CBulletBehaviorController.setDoneActionChanged(ptr, true);
 	
 	CBullet.createBullet(head.."/BoomEffect", entityPtr, ptr, nil, 0, CChapterScene.getEffectMiddleLayerPtr());
 end

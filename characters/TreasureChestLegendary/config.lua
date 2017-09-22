@@ -38,3 +38,9 @@ function C:editorWidgetDispose()
 end
 
 --=====================================
+
+function C:awake(characterDataPtr)
+    super.awake(self, characterDataPtr);
+
+    CCharacterData.loadCharacterData(characterDataPtr, "@(self)/IdleEffect");
+end
