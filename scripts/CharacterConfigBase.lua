@@ -120,6 +120,8 @@ function C:createIdle()
 	CGameActionData.setCollisionCamp(ptr, false, true);
 	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
 
+	self:_createAction(ptr);
+
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end
 
@@ -133,7 +135,12 @@ function C:createSkill0()
 	CGameActionData.setKeepTime(ptr, 0.0);
 	CGameActionData.setLock(ptr, true);
 
+	self:_createAction(ptr);
+
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
+end
+
+function C:_createAction(actionDataPtr)
 end
 
 

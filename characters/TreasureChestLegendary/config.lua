@@ -42,5 +42,22 @@ end
 function C:awake(characterDataPtr)
     super.awake(self, characterDataPtr);
 
+	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/CreateEffect");
     CCharacterData.loadCharacterData(characterDataPtr, "@(self)/IdleEffect");
+
+	self:createCreate();
+end
+
+function C:createCreate()
+	local ptr = createDefaultCreateActionData();
+	CGameActionData.setResName(ptr, "chusheng");
+	CGameActionData.setScriptName(ptr, "Create");
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr);
+end
+
+function C:_createAction(actionDataPtr)
+	if CGameActionData.getTag(actionDataPtr) == CGameAction.ACTION_IDLE then
+		CGameActionData.setScriptName(actionDataPtr, "Idle");
+	end
 end
