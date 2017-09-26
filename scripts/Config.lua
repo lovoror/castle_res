@@ -17,7 +17,7 @@ if CGameDebugger.isDebug() then
 		CGameDebugger.setCustomChapterPath("E:/Users/Sephiroth/Desktop/aaa.cpt", "E:/Users/Sephiroth/Desktop/config.lua");
 	end
 else
-	--CGameDebugger.setPlayerCreatePosition(792, -1010);
+	CGameDebugger.setPlayerCreatePosition(6400, -8150);
 	--CGameDebugger.setPlayerCreatePosition(2041, -6176);
 	--CGameDebugger.setPlayerCreatePosition(7340, -5520);
 	--CGameDebugger.setPlayerCreatePosition(14242, -6066);
@@ -53,6 +53,7 @@ CGameDebugger.setItem(29, 10);
 CGameDebugger.setItem(31, 10);
 CGameDebugger.setItem(32, 10);
 ]]--
+--[[
 CGameDebugger.setItem(13, 10);
 CGameDebugger.setItem(14, 10);
 CGameDebugger.setItem(15, 10);
@@ -78,6 +79,7 @@ CGameDebugger.setItem(48, 10);
 CGameDebugger.setItem(49, 10);
 
 CGameDebugger.writeSaveData();
+]]--
 
 function chapterEditorBehaviorComponentInit(fn)
 	fn("AI", "ai");

@@ -7,7 +7,7 @@
             <key>tex</key>
             <dict>
                 <key>frame</key>
-                <string>{{205,2},{15,15}}</string>
+                <string>{{408,2},{15,15}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,6 +20,19 @@
             <key>tex3</key>
             <dict>
                 <key>frame</key>
+                <string>{{205,2},{200,200}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,200}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>tex4</key>
+            <dict>
+                <key>frame</key>
                 <string>{{2,2},{200,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -30,6 +43,19 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
+            <key>tex5</key>
+            <dict>
+                <key>frame</key>
+                <string>{{408,20},{10,10}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{10,10}}</string>
+                <key>sourceSize</key>
+                <string>{10,10}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -38,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>tex.png</string>
             <key>size</key>
-            <string>{222,204}</string>
+            <string>{425,204}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9e298f051f1a437866c48451251e54f8:7e0366141a20a48fab39527425ecd474:32075c2a164b36a67a24ecb74c8dae8a$</string>
+            <string>$TexturePacker:SmartUpdate:3c6d493fa28a0264a85185325ddfa19d:ab616904426c040d0d07061ba2b23792:32075c2a164b36a67a24ecb74c8dae8a$</string>
             <key>textureFileName</key>
             <string>tex.png</string>
         </dict>

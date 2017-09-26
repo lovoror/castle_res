@@ -10,7 +10,7 @@ end
 
 function C:createIdle()
 	local ptr = createDefaultIdleActionData();
-	CGameActionData.setResName(ptr, "Untitled,Untitled2,Untitled3,Untitled4");
+	CGameActionData.setResName(ptr, "Untitled");
 	CGameActionData.setLock(ptr, true);
 	CGameActionData.setLoop(ptr, false);
 

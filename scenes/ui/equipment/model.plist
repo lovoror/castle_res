@@ -7,7 +7,7 @@
             <key>discharge</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,410},{36,40}}</string>
+                <string>{{661,409},{36,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,33 +20,72 @@
             <key>equipment_bg</key>
             <dict>
                 <key>frame</key>
-                <string>{{911,2},{532,726}}</string>
+                <string>{{268,176},{263,360}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{532,726}}</string>
+                <string>{{0,0},{263,360}}</string>
                 <key>sourceSize</key>
-                <string>{532,726}</string>
+                <string>{263,360}</string>
+            </dict>
+            <key>equipment_bg_corner</key>
+            <dict>
+                <key>frame</key>
+                <string>{{721,430},{18,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{18,18}}</string>
+                <key>sourceSize</key>
+                <string>{18,18}</string>
             </dict>
             <key>equipment_bg_decorate</key>
             <dict>
                 <key>frame</key>
-                <string>{{1883,166},{161,12}}</string>
+                <string>{{631,190},{161,12}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{161,12}}</string>
                 <key>sourceSize</key>
                 <string>{161,12}</string>
             </dict>
+            <key>equipment_bg_h</key>
+            <dict>
+                <key>frame</key>
+                <string>{{646,205},{248,12}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{248,12}}</string>
+                <key>sourceSize</key>
+                <string>{248,12}</string>
+            </dict>
+            <key>equipment_bg_v</key>
+            <dict>
+                <key>frame</key>
+                <string>{{795,176},{3,1}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{3,1}}</string>
+                <key>sourceSize</key>
+                <string>{3,1}</string>
+            </dict>
             <key>equipment_frame_corner_highlight</key>
             <dict>
                 <key>frame</key>
-                <string>{{1818,474},{18,18}}</string>
+                <string>{{721,409},{18,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +98,7 @@
             <key>equipment_frame_line_highlight</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,463},{1,1}}</string>
+                <string>{{799,180},{1,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +111,11 @@
             <key>equipment_scroll_bar</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,453},{3,1}}</string>
+                <string>{{795,176},{3,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{3,1}}</string>
                 <key>sourceSize</key>
@@ -85,7 +124,7 @@
             <key>equipment_title</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,206},{201,67}}</string>
+                <string>{{731,205},{201,67}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,11 +137,11 @@
             <key>info_bg</key>
             <dict>
                 <key>frame</key>
-                <string>{{1640,2},{532,163}}</string>
+                <string>{{268,2},{532,163}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{532,163}}</string>
                 <key>sourceSize</key>
@@ -111,11 +150,11 @@
             <key>line</key>
             <dict>
                 <key>frame</key>
-                <string>{{1806,2},{526,4}}</string>
+                <string>{{268,168},{526,4}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{526,4}}</string>
                 <key>sourceSize</key>
@@ -124,7 +163,7 @@
             <key>scroll_bar_bg</key>
             <dict>
                 <key>frame</key>
-                <string>{{1812,531},{3,1}}</string>
+                <string>{{797,172},{3,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,33 +176,72 @@
             <key>stash_bg</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{532,906}}</string>
+                <string>{{2,2},{263,450}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{532,906}}</string>
+                <string>{{0,0},{263,450}}</string>
                 <key>sourceSize</key>
-                <string>{532,906}</string>
+                <string>{263,450}</string>
+            </dict>
+            <key>stash_bg_corner</key>
+            <dict>
+                <key>frame</key>
+                <string>{{700,430},{18,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{18,18}}</string>
+                <key>sourceSize</key>
+                <string>{18,18}</string>
             </dict>
             <key>stash_bg_decorate</key>
             <dict>
                 <key>frame</key>
-                <string>{{1883,2},{161,12}}</string>
+                <string>{{631,175},{161,12}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{161,12}}</string>
                 <key>sourceSize</key>
                 <string>{161,12}</string>
             </dict>
+            <key>stash_bg_h</key>
+            <dict>
+                <key>frame</key>
+                <string>{{631,205},{248,12}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{248,12}}</string>
+                <key>sourceSize</key>
+                <string>{248,12}</string>
+            </dict>
+            <key>stash_bg_v</key>
+            <dict>
+                <key>frame</key>
+                <string>{{797,168},{3,1}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{3,1}}</string>
+                <key>sourceSize</key>
+                <string>{3,1}</string>
+            </dict>
             <key>stash_frame_corner_highlight</key>
             <dict>
                 <key>frame</key>
-                <string>{{1818,453},{18,18}}</string>
+                <string>{{700,409},{18,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +254,7 @@
             <key>stash_frame_line_highlight</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,459},{1,1}}</string>
+                <string>{{795,180},{1,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +267,7 @@
             <key>stash_scroll_bar</key>
             <dict>
                 <key>frame</key>
-                <string>{{1806,531},{3,1}}</string>
+                <string>{{797,168},{3,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +280,7 @@
             <key>stash_title</key>
             <dict>
                 <key>frame</key>
-                <string>{{1813,2},{201,67}}</string>
+                <string>{{661,205},{201,67}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -220,9 +298,9 @@
             <key>realTextureFileName</key>
             <string>tex.png</string>
             <key>size</key>
-            <string>{1897,536}</string>
+            <string>{802,455}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ae003260c592d79abeb7ba045b6fa78a:5e41c26283ec920d103c0ca5b15ed0e5:32075c2a164b36a67a24ecb74c8dae8a$</string>
+            <string>$TexturePacker:SmartUpdate:c973ed4e96484eead102e33f4f2581c8:7d8eb27b9f0cd09f6f27eb1d54dd9a90:32075c2a164b36a67a24ecb74c8dae8a$</string>
             <key>textureFileName</key>
             <string>tex.png</string>
         </dict>

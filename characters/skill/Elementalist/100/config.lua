@@ -4,6 +4,7 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.setCustomSync(characterDataPtr, true);
+	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/DieEffect");
 
 	CCharacterData.loadSound(characterDataPtr, "1", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
 	CCharacterData.loadSound(characterDataPtr, "2", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
@@ -63,6 +64,7 @@ end
 function C:createDie()
 	local ptr = createDefaultDieActionData();
 	CGameActionData.setResName(ptr, "bd_normal_daji");
+	CGameActionData.setScriptName(ptr, "Die");
 	CGameActionData.setBlockMoveInfluenced(ptr, false);
 
 	local scPtr = CSoundPackage.create();
