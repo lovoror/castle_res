@@ -147,8 +147,8 @@ timeline2: 1.0
 active: false
 - Tint - 
 colorsCount: 6
-colors0: 0.38039216
-colors1: 0.89411765
+colors0: 0.6156863
+colors1: 0.9372549
 colors2: 1.0
 colors3: 0.8352941
 colors4: 0.99607843

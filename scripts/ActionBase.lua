@@ -35,6 +35,9 @@ end
 function C:executeSync(bytesPtr)
 end
 
+function C:trigger(name, value)
+end
+
 function C:start(itemPtr)
 end
 

@@ -4,6 +4,7 @@ function C:awake(actionPtr)
 	super.awake(self, actionPtr);
 
 	self.hp = 3;
+	self.crackPtr = nil;
 end
 
 function C:start(itemPtr)
@@ -89,5 +90,30 @@ function C:_doEffect(isDie)
 		CBulletBehaviorController.setScale(ptr, s);
 	end
 
-	CBullet.createBullet(CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)).."/Effect", entityPtr, ptr, nil, 0, CChapterScene.getEffectTopLayerPtr(0));
+	local head = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr));
+
+	if isDie then
+		if self.crackPtr ~= nil then
+			CEntity.setDie(self.crackPtr);
+			self.crackPtr = nil;
+		end
+	else
+		if self.crackPtr == nil then
+			local crackPtr = CBullet.createBullet(head.."/Crack", entityPtr, nil, nil, 0, CEntity.getLayerPtr(entityPtr));
+			self.crackPtr = crackPtr;
+			CEntity.setPosition(crackPtr, x, y);
+			CEntity.doTrigger(self.crackPtr, "size", tostring(tw)..","..tostring(th));
+		end
+
+		local value = "";
+		if self.hp == 1 then
+			value = "1";
+		elseif self.hp > 1 then
+			value = "0";
+		end
+		
+		CEntity.doTrigger(self.crackPtr, "type", value);
+	end
+
+	CBullet.createBullet(head.."/Dust", entityPtr, ptr, nil, 0, CChapterScene.getEffectTopLayerPtr(0));
 end

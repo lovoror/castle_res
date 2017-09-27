@@ -13,12 +13,13 @@ setfenv = setfenv or function(f, t)
     end
 end
 
-function stringSplit(content, token)
-    if not content or not token then return end
-    local strArray = {};
-    local i = 1;
+function stringSplit(content, token, strArray)
+    if not content or not token then return; end
+    if  strArray == nil then strArray = {}; end
+    local i = 0;
     local contentLen = string.len(content);
     while true do
+	 	i = i + 1;
         -- trueÊÇÓÃÀ´±ܿªstring.findº¯Êý¶ÔÌØÊâ×ַû¼ì²é ÌØÊâ×ַû "^$*+?.([%-"
         local beginPos, endPos = string.find(content, token, 1, true);
         if not beginPos then
@@ -28,9 +29,9 @@ function stringSplit(content, token)
         strArray[i] = string.sub(content, 1, beginPos - 1);
         content = string.sub(content, endPos + 1, contentLen);
         contentLen = contentLen - endPos;
-        i = i + 1
+       
     end
-    return strArray;
+    return strArray, i;
 end
 
 __classTable = {};

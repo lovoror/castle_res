@@ -277,11 +277,15 @@ end
 function C:executeSync(bytesPtr)
 end
 
+function C:trigger(name, value)
+end
+
 function C:actionStart()
 end
 
 function C:actionEnd()
 end
+
 
 
 --AIClassic

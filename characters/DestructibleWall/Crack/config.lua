@@ -4,18 +4,14 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.setCustomSync(characterDataPtr, true);
-	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Crack");
-	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Dust");
 
 	self:createIdle();
 end
 
 function C:createIdle()
 	local ptr = createDefaultIdleActionData();
-	CGameActionData.setScriptName(ptr, "Idle", false);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
-	CGameActionData.setCollisionCamp(ptr, false, true);
+	CGameActionData.setScriptName(ptr, "Idle", false);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end

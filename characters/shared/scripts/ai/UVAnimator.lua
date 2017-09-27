@@ -135,14 +135,14 @@ function C:editorWidgetRefresh()
 		CESColorBox.setColor(self.editorColor, arr[1], arr[2], arr[3], arr[4]);
 	end
 
-	local rectcColor = CChapterEditorComponentBehavior.getValue(com, self.KEY_RECT_COLOR);
-	if rectcColor == "" then
+	local rectColor = CChapterEditorComponentBehavior.getValue(com, self.KEY_RECT_COLOR);
+	if rectColor == "" then
 		CESColorBox.setColor(self.editorRectColorLT, 255, 255, 255, 255);
 		CESColorBox.setColor(self.editorRectColorRT, 255, 255, 255, 255);
 		CESColorBox.setColor(self.editorRectColorLB, 255, 255, 255, 255);
 		CESColorBox.setColor(self.editorRectColorRB, 255, 255, 255, 255);
 	else
-		local arr = stringSplit(rectcColor, ",");
+		local arr = stringSplit(rectColor, ",");
 		CESColorBox.setColor(self.editorRectColorLB, arr[1], arr[2], arr[3], arr[4]);
 		CESColorBox.setColor(self.editorRectColorLT, arr[5], arr[6], arr[7], arr[8]);
 		CESColorBox.setColor(self.editorRectColorRT, arr[9], arr[10], arr[11], arr[12]);
