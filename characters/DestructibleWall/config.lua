@@ -7,6 +7,10 @@ function C:awake(characterDataPtr)
 	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Crack");
 	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Dust");
 
+	CCharacterData.loadSound(characterDataPtr, "crazing1", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "crazing2", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "crazing3", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+
 	self:createIdle();
 end
 

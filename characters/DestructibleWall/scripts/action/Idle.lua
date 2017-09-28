@@ -35,7 +35,7 @@ function C:executeSync(bytesPtr)
 end
 
 function C:suffered(attackDataPtr)
-    if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP and self.hp > 0 then
+    if CAttackData.getValue(attackDataPtr) < 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP and self.hp > 0 then
         self.hp = self.hp - 1;
         if self.hp == 0 then
 			if CChapterScene.isNetwork() then
@@ -90,7 +90,20 @@ function C:_doEffect(isDie)
 		CBulletBehaviorController.setScale(ptr, s);
 	end
 
-	local head = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr));
+	local selfId = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr));
+
+	local sndName = "crazing";
+	if self.hp == 0 then
+		sndName = sndName.."3";
+	elseif self.hp == 1 then
+		sndName = sndName.."2";
+	else
+		sndName = sndName.."1";
+	end
+
+	local chPtr = CAudioManager.playByName(CGameResource.getCharacterSoundFile(selfId, sndName), true);
+	CAudioManager.set3DAttributes(chPtr, x, y);
+	CAudioManager.setPaused(chPtr, false);
 
 	if isDie then
 		if self.crackPtr ~= nil then
@@ -99,7 +112,7 @@ function C:_doEffect(isDie)
 		end
 	else
 		if self.crackPtr == nil then
-			local crackPtr = CBullet.createBullet(head.."/Crack", entityPtr, nil, nil, 0, CEntity.getLayerPtr(entityPtr));
+			local crackPtr = CBullet.createBullet(selfId.."/Crack", entityPtr, nil, nil, 0, CEntity.getLayerPtr(entityPtr));
 			self.crackPtr = crackPtr;
 			CEntity.setPosition(crackPtr, x, y);
 			CEntity.doTrigger(self.crackPtr, "size", tostring(tw)..","..tostring(th));
@@ -115,5 +128,5 @@ function C:_doEffect(isDie)
 		CEntity.doTrigger(self.crackPtr, "type", value);
 	end
 
-	CBullet.createBullet(head.."/Dust", entityPtr, ptr, nil, 0, CChapterScene.getEffectTopLayerPtr(0));
+	CBullet.createBullet(selfId.."/Dust", entityPtr, ptr, nil, 0, CChapterScene.getEffectTopLayerPtr(0));
 end
