@@ -5,7 +5,6 @@ local C = registerClassAuto(getClass(CHARACTER_CONFIG_PACKAGE, CHARACTER_CONFIG_
 function C:editorWidgetCreate(widgetPtr)
 	super.editorWidgetCreate(self, widgetPtr);
 
-	self.KEY_LENGTH = "len";
 	self.KEY_QUANTITY = "n";
 	self.KEY_GAP = "gap";
 
@@ -13,11 +12,6 @@ function C:editorWidgetCreate(widgetPtr)
 	self.DEFAULT_GAP = 0.0;
 
 	CComponentBehaviorWidget.HLayoutBegin(widgetPtr);
-
-	local hp, lenLabel, len = createEditorLineEdit(widgetPtr, "Length");
-	self.editorLen = len;
-	CHorizontalPanel.setSingle(hp, lenLabel, len);
-	CComponentBehaviorWidget.addHLayoutPanel(widgetPtr, hp);
 
 	local hp, quantityLabel, quantity = createEditorLineEdit(widgetPtr, "Quantity");
 	self.editorQuantity = quantity;
@@ -27,13 +21,8 @@ function C:editorWidgetCreate(widgetPtr)
 
 	CComponentBehaviorWidget.HLayoutEnd(widgetPtr);
 
-	CComponentBehaviorWidget.bindPrefabContextMenu(widgetPtr, lenLabel, self.KEY_LENGTH);
 	CComponentBehaviorWidget.bindPrefabContextMenu(widgetPtr, quantityLabel, self.KEY_QUANTITY);
 	CComponentBehaviorWidget.bindPrefabContextMenu(widgetPtr, gapLabel, self.KEY_GAP);
-
-	self.editorLenListener = CESLineEdit.setActionListener(len, function()
-		editorLineEditChangedUFloat(len, self.editorWidgetPtr, self.KEY_LENGTH, "0", "0");
-	end);
 
 	self.editorQuantityListener = CESLineEdit.setActionListener(quantity, function()
 		editorLineEditChangedUInt(quantity, self.editorWidgetPtr, self.KEY_QUANTITY, "", tostring(self.DEFAULT_QUANTITY));
@@ -49,10 +38,6 @@ end
 function C:editorWidgetRefresh()
 	local com = CComponentBehaviorWidget.getEditorComponent(self.editorWidgetPtr);
 
-	local value = CChapterEditorComponentBehavior.getValue(com, self.KEY_LENGTH);
-	if value == "" then value = "0"; end
-	CESLineEdit.setText(self.editorLen, value);
-
 	local value = CChapterEditorComponentBehavior.getValue(com, self.KEY_QUANTITY);
 	if value == "" then value = tostring(self.DEFAULT_QUANTITY); end
 	CESLineEdit.setText(self.editorQuantity, value);
@@ -63,10 +48,6 @@ function C:editorWidgetRefresh()
 end
 
 function C:editorWidgetDispose()
-	if self.editorLen ~= nil then
-		Cunref(self.editorLenListener);
-		self.editorLen = nil;
-	end
 	if self.editorQuantity ~= nil then
 		Cunref(self.editorQuantityListener);
 		self.editorQuantity = nil;

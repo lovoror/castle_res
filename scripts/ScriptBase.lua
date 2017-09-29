@@ -175,7 +175,7 @@ function toint(x)
 	return math.tointeger(tonumber(x));
 end
 
--- ¡ý¡ú X
+-- ï¿½ï¿½ï¿½ï¿½ X
 function createInstructionFormula_DFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -196,7 +196,7 @@ function createInstructionFormula_DFX(x)
 	return formulaPtr;
 end
 
--- ¡ú¡ý¡ú X
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ X
 function createInstructionFormula_FDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -222,7 +222,7 @@ function createInstructionFormula_FDFX(x)
 	return formulaPtr;
 end
 
--- ¡û¡ý¡ú X
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ X
 function createInstructionFormula_BDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -248,7 +248,7 @@ function createInstructionFormula_BDFX(x)
 	return formulaPtr;
 end
 
--- ¡ú¡ý¡û¡ú X
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ X
 function createInstructionFormula_FDBFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -577,7 +577,7 @@ end
 function showBattleNumber(entityPtr, value, type)
 	local x, y = CEntity.getPosition(entityPtr);
 
-	CChapterScene.showNumber(value, type, x - 10.0 + math.random() * 20.0, y + 160.0 - 10.0 + math.random() * 20.0);
+	CChapterScene.showNumber(value, type, x, y + 160.0);
 end
 
 function showChangedHPMPEffect(entityPtr, changedHP, changedMP)

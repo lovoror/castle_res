@@ -2,7 +2,6 @@
 local C = registerClassAuto(getClass(ACTION_PACKAGE, ACTION_BASE));
 
 function C:ctor()
-	self.KEY_LENGTH = "len";
 	self.KEY_QUANTITY = "n";
 	self.KEY_GAP = "gap";
 
@@ -41,11 +40,6 @@ function C:_init()
 	local entityPtr = self.entityPtr;
 
 	self.maxHeight = nil;
-	local value = CEntity.getSharedData(entityPtr, self.KEY_LENGTH);
-	if value ~= "" then
-		self.maxHeight = tonumber(value);
-		if self.maxHeight <= 0.0 then self.maxHeight = nil; end
-	end
 
 	local value = CEntity.getSharedData(entityPtr, self.KEY_GAP);
 	if value ~= "" then
@@ -64,17 +58,19 @@ function C:_init()
 	local disPtr = self.disPtr;
 
 	local resHead = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)).."/";
+	local rnd = math.random;
 	for i = 1, self.maxNum do
-		local bodyPtr = CGameSprite.createWithSpriteFrameName(resHead.."body");
-		CGameNode.setAnchorPoint(bodyPtr, 0.0, 0.0);
+		local bodyPtr = CGameSprite.createWithSpriteFrameName(resHead..tostring(rnd(0, 3)));
+		CGameNode.setAnchorPoint(bodyPtr, 0.5, 0.0);
 		CGameNode.addChild(disPtr, bodyPtr);
+		if rnd(0, 1) == 0 then
+			CGameNode.setScale(bodyPtr, -1.0, 1.0);
+		end
 
 		if i == 1 then
 			local w, h = CGameNode.getContentSize(bodyPtr);
 			self.bodyWidth = w;
-			if self.maxHeight == nil then
-				self.maxHeight  = h;
-			end
+			self.maxHeight = h;
 			self.startX = -(w * self.maxNum + self.gap * (self.maxNum - 1)) * 0.5;
 		end
 
