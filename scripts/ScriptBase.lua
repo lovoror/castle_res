@@ -175,7 +175,7 @@ function toint(x)
 	return math.tointeger(tonumber(x));
 end
 
--- ���� X
+-- ↓→ + X
 function createInstructionFormula_DFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -196,7 +196,7 @@ function createInstructionFormula_DFX(x)
 	return formulaPtr;
 end
 
--- ������ X
+-- →↓→ + X
 function createInstructionFormula_FDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -222,7 +222,7 @@ function createInstructionFormula_FDFX(x)
 	return formulaPtr;
 end
 
--- ������ X
+-- ←↓→ + X
 function createInstructionFormula_BDFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -248,7 +248,7 @@ function createInstructionFormula_BDFX(x)
 	return formulaPtr;
 end
 
--- �������� X
+-- →↓←→ + X
 function createInstructionFormula_FDBFX(x)
 	local formulaPtr = CInstructionFormula.create();
 
@@ -580,30 +580,39 @@ function showBattleNumber(entityPtr, value, type)
 	CChapterScene.showNumber(value, type, x, y + 160.0);
 end
 
+function showBattleNumberWithPos(x, y, value, type)
+	CChapterScene.showNumber(value, type, x, y + 160.0, false);
+end
+
 function showChangedHPMPEffect(entityPtr, changedHP, changedMP)
-	local adPtr = nil;
+	local x, y;
+	if changedHP ~= 0 and changedMP ~= 0 then
+		x, y = CEntity.getPosition(entityPtr);
+		x, y = CBattleNumber.calcRandomPosition(x, y, CBattleNumber.getDefaultRandomRange());
+	end
 
 	if changedHP ~= 0 then
-		showBattleNumber(entityPtr, changedHP, CBattleNumberType.HP);
+		if x == nil then
+			showBattleNumber(entityPtr, changedHP, CBattleNumberType.HP);
+		else
+			showBattleNumberWithPos(x, y + 10.0, changedHP, CBattleNumberType.HP);
+		end
 
-		adPtr = CAttackData.create(entityPtr, entityPtr, changedHP, CBattleNumberType.HP, 0.0, 0.0);
-		setDefaultInjuredEffect(adPtr);
+		CAttackData.create(entityPtr, entityPtr, changedHP, CBattleNumberType.HP, 0.0, 0.0, function(adPtr)
+			setDefaultInjuredEffect(adPtr);
+		end);
 	end
 
 	if changedMP ~= 0 then
-		showBattleNumber(entityPtr, changedMP, CBattleNumberType.MP);
-
-		if adPtr == nil then
-			adPtr = CAttackData.create(entityPtr, entityPtr, changedMP, CBattleNumberType.MP, 0.0, 0.0);
+		if x == nil then
+			showBattleNumber(entityPtr, changedMP, CBattleNumberType.MP);
 		else
-			CAttackData.setValue(adPtr, changedMP);
-			CAttackData.setType(adPtr, CBattleNumberType.MP);
+			showBattleNumberWithPos(x, y - 10.0, changedMP, CBattleNumberType.MP);
 		end
-		setDefaultInjuredEffect(adPtr);
-	end
 
-	if adPtr ~= nil then
-		CAttackData.free(adPtr);
+		CAttackData.create(entityPtr, entityPtr, changedMP, CBattleNumberType.MP, 0.0, 0.0, function(adPtr)
+			setDefaultInjuredEffect(adPtr);
+		end);
 	end
 end
 
