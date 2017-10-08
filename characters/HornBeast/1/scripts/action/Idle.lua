@@ -50,9 +50,9 @@ function C:_init()
 	self.bodyNodePtr = bodyNodePtr;
 	self.endNodePtr = endNodePtr;
 
-	CGameSprite.setBlendFunc(startNodePtr, CGameSprite.BLEND_ADD);
-	CGameSprite.setBlendFunc(bodyNodePtr, CGameSprite.BLEND_ADD);
-	CGameSprite.setBlendFunc(endNodePtr, CGameSprite.BLEND_ADD);
+	CGameSprite.setFilter(startNodePtr, CGameFilter.ADDITIVE);
+	CGameSprite.setFilter(bodyNodePtr, CGameFilter.ADDITIVE);
+	CGameSprite.setFilter(endNodePtr, CGameFilter.ADDITIVE);
 
 	CGameNode.setScale(startNodePtr, 2.5, 2.5);
 	CGameNode.setScale(endNodePtr, 2.0, 2.0);

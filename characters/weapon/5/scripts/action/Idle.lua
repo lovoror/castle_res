@@ -31,7 +31,7 @@ function C:start(itemPtr)
 	self.number = number;
 	local res = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)).."/";
 	self.symbolPtr = CGameSprite.createWithSpriteFrameName(res..number);
-	--CGameSprite.setBlendFunc(self.symbolPtr, CGameSprite.BLEND_ADD);
+	--CGameSprite.setFilter(self.symbolPtr, CGameFilter.ADDITIVE);
 	CGameNode.addChild(self.disPtr, self.symbolPtr);
 
 	local w, h = CGameNode.getContentSize(self.symbolPtr);

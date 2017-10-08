@@ -82,9 +82,6 @@ end
 --FoodIdleBase
 local C = registerClass(ACTION_PACKAGE, ACTION_FOOD_IDLE_BASE, getClass(ACTION_PACKAGE, ACTION_BASE));
 
-function C:ctor()
-end
-
 function C:awake(actionPtr)
 	super.awake(self, actionPtr);
 
@@ -93,6 +90,8 @@ function C:awake(actionPtr)
 	CGameNode.setPosition(disPtr, 0.0, 0.0);
 	CGameRef.retain(disPtr);
 	self.disPtr = disPtr;
+	self.contentPtr = nil;
+	self.animatorPtr = nil;
 end
 
 function C:start(itemPtr)
@@ -110,19 +109,19 @@ function C:start(itemPtr)
 	self.entityPtr = entityPtr;
 
 	local hw = self.COLL_W * 0.5;
-	
+
 	CEntity.setBodyShape(entityPtr, CBodyShapeType.BOX, -hw, 0.0, hw, self.COLL_H, 1.0, 1.0);
 	CEntity.setUpdateBodyShapeEnabled(entityPtr, false);
 
 	self.isAttacked = false;
-	self.changedHP = 0;
-	self.changedMP = 0;
 end
 
 function C:_init()
 	local contentPtr = CGameSprite.createWithSpriteFrameName(self.id.."/tex");
 	CGameNode.setAnchorPoint(contentPtr, 0.5, 0.0);
 	CGameNode.addChild(self.disPtr, contentPtr);
+
+	self.animatorPtr = CDropItemAnimator.create(contentPtr);
 
 	local sw, sh = CGameNode.getContentSize(contentPtr);
 	self.COLL_W = sw;
@@ -135,8 +134,6 @@ function C:attacking(attackDataPtr)
 	if (not self.isAttacked) and CEntity.getType(sufferPtr) == CEntityType.PLAYER and CEntity.isHost(sufferPtr) then
 		self.isAttacked = true;
 
-		self:_eat(sufferPtr);
-
 		if CChapterScene.isNetwork() then
 			CProtocol.sendCptEntityDied(sufferPtr);
 		end
@@ -146,8 +143,47 @@ function C:attacking(attackDataPtr)
 	return CCollisionResult.FAILED;
 end
 
+function C:tick(time)
+	CDropItemAnimator.tick(self.animatorPtr, time, CEntity.getPhysicsState(self.entityPtr) == CPhysicsState.STAND);
+end
+
 function C:updateColliders()
 	CGameAction.setCollider(self.actionPtr, 0, 0.0, self.COLL_Y, 0.0, 1.0, 1.0, 0, self.COLL_W, self.COLL_H, 0);
+
+	return true, true;
+end
+
+function C:finish()
+	CDropItemAnimator.free(self.animatorPtr);
+	self.animatorPtr = nil;
+	CGameNode.removeChild(CGameAction.getDisplayPtr(self.actionPtr), self.disPtr);
+end
+
+function C:dispose()
+	return true;
+end
+
+
+
+--FoodDieBase
+local C = registerClass(ACTION_PACKAGE, ACTION_FOOD_DIE_BASE, getClass(ACTION_PACKAGE, ACTION_BASE));
+
+function C:start(itemPtr)
+	self.changedHP = 0;
+	self.changedMP = 0;
+end
+
+function C:attacking(attackDataPtr)
+	local sufferPtr = CAttackData.getSufferPtr(attackDataPtr);
+	if CEntity.getType(sufferPtr) == CEntityType.PLAYER and CEntity.isHost(sufferPtr) then
+		self:_eat(sufferPtr);
+	end
+
+	return CCollisionResult.FAILED;
+end
+
+function C:updateColliders()
+	CGameAction.setCollider(self.actionPtr, 0, 0.0, 80.0, 0.0, 1.0, 1.0, 0, 160.0, 160.0, 0);
 
 	return true, true;
 end

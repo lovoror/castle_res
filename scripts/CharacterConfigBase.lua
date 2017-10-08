@@ -154,12 +154,23 @@ function C:awake(characterDataPtr)
 	CCharacterData.setCustomSync(characterDataPtr, true);
 
 	self:createIdle();
+	self:createDie();
 end
 
 function C:createIdle()
 	local ptr = createDefaultIdleActionData();
-	CGameActionData.setScriptName(ptr, "Idle", false);
+	CGameActionData.setScriptName(ptr, "@"..ACTION_FOOD_IDLE_BASE, false);
 	CGameActionData.setLock(ptr, true);
+	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr);
+end
+
+function C:createDie()
+	local ptr = createDefaultDieActionData();
+	CGameActionData.setScriptName(ptr, "Die", false);
+	CGameActionData.setKeepTime(ptr, 0.1);
+	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);

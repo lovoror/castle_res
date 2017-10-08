@@ -182,7 +182,7 @@ function C:_init()
 	end
 
 	local startNodePtr = CGameSprite.createWithSpriteFrameName(self.resHead.."/start");
-	CGameSprite.setBlendFunc(startNodePtr, CGameSprite.BLEND_ADD);
+	CGameSprite.setFilter(startNodePtr, CGameFilter.ADDITIVE);
 	local minSize = 0.5;
 	local maxSize = 1.2;
 	local curSize = minSize + (maxSize - minSize) * (lv / maxLv);
@@ -294,20 +294,20 @@ function C:_create()
 	local texPath = CCharacterData.getTexPath(CEntity.getCharacterDataPtr(entityPtr));
 
 	local psPtr = CPolySprite.create(texPath, CPolySprite.QUADS);
-	CGameSprite.setBlendFunc(psPtr, CGameSprite.BLEND_ADD);
+	CGameSprite.setFilter(psPtr, CGameFilter.ADDITIVE);
 	CGameNode.setAnchorPoint(psPtr, 0.0, 0.0);
 	CGameNode.setPosition(psPtr, 0.0, 0.0);
 	CPolySprite.createElements(psPtr, numElements, false, false);
 
 	local psPtr2 = CPolySprite.create(texPath, CPolySprite.QUADS);
-	CGameSprite.setBlendFunc(psPtr2, CGameSprite.BLEND_ADD);
+	CGameSprite.setFilter(psPtr2, CGameFilter.ADDITIVE);
 	CGameNode.setAnchorPoint(psPtr2, 0.0, 0.0);
 	CGameNode.setPosition(psPtr2, 0.0, 0.0);
 	CPolySprite.createElements(psPtr2, numElements, false, false);
 	CGameNode.setColor(psPtr2, 0, 0, 127);
 
 	local psPtr3 = CPolySprite.create(texPath, CPolySprite.QUADS);
-	CGameSprite.setBlendFunc(psPtr3, CGameSprite.BLEND_ADD);
+	CGameSprite.setFilter(psPtr3, CGameFilter.ADDITIVE);
 	CGameNode.setAnchorPoint(psPtr3, 0.0, 0.0);
 	CGameNode.setPosition(psPtr3, 0.0, 0.0);
 	CPolySprite.createElements(psPtr3, numElements, false, false);
@@ -457,7 +457,7 @@ function C:_create()
 
 		endNodePtr = CGameSprite.createWithSpriteFrameName(self.resHead.."/hit");
 		if flip then ex = -ex; end
-		CGameSprite.setBlendFunc(endNodePtr, CGameSprite.BLEND_ADD);
+		CGameSprite.setFilter(endNodePtr, CGameFilter.ADDITIVE);
 		CGameNode.setPosition(endNodePtr, ex, ey);
 		curSize = prevThickness / thickness;
 		if curSize < 0.5 then

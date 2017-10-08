@@ -44,7 +44,7 @@ function C:_init()
 	local id = CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr));
 	local res = id.."/";
 	self.symbolPtr = CGameSprite.createWithSpriteFrameName(res..number);
-	--CGameSprite.setBlendFunc(self.symbolPtr, CGameSprite.BLEND_ADD);
+	--CGameSprite.setFilter(self.symbolPtr, CGameFilter.ADDITIVE);
 	CGameNode.addChild(self.disPtr, self.symbolPtr);
 	self.ripplePtr = CGameSprite.createWithSpriteFrameName(res.."xs");
 	CGameNode.setScale(self.ripplePtr, 0.0, 0.0);

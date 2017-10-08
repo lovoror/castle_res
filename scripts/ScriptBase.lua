@@ -9,6 +9,7 @@ CHAPTER_CONFIG_BASE = "Base";
 ACTION_PACKAGE = "entities.actions";
 ACTION_BASE = "Base";
 ACTION_FOOD_IDLE_BASE = "FoodIdleBase";
+ACTION_FOOD_DIE_BASE = "FoodDieBase";
 
 ACTION_CONTROLLER_PACKAGE = "entities.actioncontrollers";
 AACTION_CONTROLLER_BASE = "Base";
