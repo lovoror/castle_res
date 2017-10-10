@@ -2,7 +2,7 @@
 local C = registerClassAuto(getClass(ACTION_PACKAGE, ACTION_BASE));
 
 function C:isCancel(tag, itemPtr)
-	if tag == MAGIC_ACTION_INDEX then
+	if tag == CGameAction.ACTION_SKILL..MAGIC_ACTION_INDEX then
 		return true;
 	else
 		return false;
