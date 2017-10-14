@@ -34,8 +34,8 @@ function C:isDone(result)
 	end
 end
 
-function C:isCancel(tag, itemPtr)
-	if tag == CGameAction.ACTION_SLIDE_TACKLE then
+function C:isCancel(tagPtr, itemPtr)
+	if CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_SLIDE_TACKLE) then
 		return true;
 	else
 		return false;

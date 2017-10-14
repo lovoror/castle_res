@@ -150,6 +150,9 @@ function C:editorAwake(comPtr)
 	self.editorComponentPtr = comPtr;
 end
 
+function C:editorDeserialized()
+end
+
 function C:editorDefaultData()
 	return "";
 end

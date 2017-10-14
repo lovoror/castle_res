@@ -6,6 +6,8 @@ function C:ctor()
 	self.KEY_V = "v";
 	self.KEY_COLOR= "color";
 	self.KEY_RECT_COLOR = "rectColor";
+
+	self.tmpArr = {};
 end
 
 function C:editorWidgetCreate(widgetPtr)
@@ -59,7 +61,7 @@ function C:editorWidgetCreate(widgetPtr)
 	CComponentBehaviorWidget.bindPrefabContextMenu(widgetPtr, rectColorLabel, self.KEY_RECT_COLOR);
 
 	local uvFn = function(editor, key)
-		local com = CComponentBehaviorWidget.getEditorComponent(self.editorWidgetPtr);
+		local com = self.editorComponentPtr;
 
 		local value = CESLineEdit.getText(editor);
 		if CStringHelper.isFloat(value) then
@@ -73,14 +75,13 @@ function C:editorWidgetCreate(widgetPtr)
 
 	local rectColorFn = function()
 		local colorStrFn = function(editor)
-			local r, g, b, a = CESColorBox.getColor(editor);
-			return tostring(r)..","..tostring(g)..","..tostring(b)..","..tostring(a);
+			return string.format("%x", CESColorBox.getColor(editor));
 		end
 		local value = colorStrFn(self.editorRectColorLB)..","..colorStrFn(self.editorRectColorLT)..","..colorStrFn(self.editorRectColorRT)..","..colorStrFn(self.editorRectColorRB);
-		if value == "255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255" then
+		if value == "FFFFFFFF,FFFFFFFF,FFFFFFFF,FFFFFFFF" then
 			value = "";
 		end
-		CChapterEditorComponentBehavior.setValue(CComponentBehaviorWidget.getEditorComponent(self.editorWidgetPtr), self.KEY_RECT_COLOR, value);
+		CChapterEditorComponentBehavior.setValue(self.editorComponentPtr, self.KEY_RECT_COLOR, value);
 	end
 
 	self.editorUListener = CESLineEdit.setActionListener(u, function()
@@ -92,12 +93,12 @@ function C:editorWidgetCreate(widgetPtr)
 	end);
 
 	self.editorColorListener = CESColorBox.setActionListener(color, function()
-		local r, g, b, a = CESColorBox.getColor(self.editorColor);
+		local c = CESColorBox.getColor(self.editorColor);
 		local value = "";
-		if (r ~= 255) or (g ~= 255) or (b ~= 255) or (a ~= 255) then
-			value = tostring(r)..","..tostring(g)..","..tostring(b)..","..tostring(a);
+		if c ~= 0xFFFFFFFF then
+			value = string.format("%x", c);
 		end
-		CChapterEditorComponentBehavior.setValue(CComponentBehaviorWidget.getEditorComponent(self.editorWidgetPtr), self.KEY_COLOR, value);
+		CChapterEditorComponentBehavior.setValue(self.editorComponentPtr, self.KEY_COLOR, value);
 	end);
 
 	self.editorRectColorLTListener = CESColorBox.setActionListener(rectColorLT, function()
@@ -117,7 +118,7 @@ function C:editorWidgetCreate(widgetPtr)
 end
 
 function C:editorWidgetRefresh()
-	local com = CComponentBehaviorWidget.getEditorComponent(self.editorWidgetPtr);
+	local com = self.editorComponentPtr;
 
 	local u = CChapterEditorComponentBehavior.getValue(com, self.KEY_U);
 	if u == "" then u = "0"; end
@@ -129,24 +130,23 @@ function C:editorWidgetRefresh()
 
 	local color = CChapterEditorComponentBehavior.getValue(com, self.KEY_COLOR);
 	if color == "" then
-		CESColorBox.setColor(self.editorColor, 255, 255, 255, 255);
+		CESColorBox.setColor(self.editorColor, 0xFFFFFFFF);
 	else
-		local arr = stringSplit(color, ",");
-		CESColorBox.setColor(self.editorColor, arr[1], arr[2], arr[3], arr[4]);
+		CESColorBox.setColor(self.editorColor, tonumber(color, 16));
 	end
 
 	local rectColor = CChapterEditorComponentBehavior.getValue(com, self.KEY_RECT_COLOR);
 	if rectColor == "" then
-		CESColorBox.setColor(self.editorRectColorLT, 255, 255, 255, 255);
-		CESColorBox.setColor(self.editorRectColorRT, 255, 255, 255, 255);
-		CESColorBox.setColor(self.editorRectColorLB, 255, 255, 255, 255);
-		CESColorBox.setColor(self.editorRectColorRB, 255, 255, 255, 255);
+		CESColorBox.setColor(self.editorRectColorLT, 0xFFFFFFFF);
+		CESColorBox.setColor(self.editorRectColorRT, 0xFFFFFFFF);
+		CESColorBox.setColor(self.editorRectColorLB, 0xFFFFFFFF);
+		CESColorBox.setColor(self.editorRectColorRB, 0xFFFFFFFF);
 	else
-		local arr = stringSplit(rectColor, ",");
-		CESColorBox.setColor(self.editorRectColorLB, arr[1], arr[2], arr[3], arr[4]);
-		CESColorBox.setColor(self.editorRectColorLT, arr[5], arr[6], arr[7], arr[8]);
-		CESColorBox.setColor(self.editorRectColorRT, arr[9], arr[10], arr[11], arr[12]);
-		CESColorBox.setColor(self.editorRectColorRB, arr[13], arr[14], arr[15], arr[16]);
+		local arr = stringSplit(rectColor, ",", self.tmpArr);
+		CESColorBox.setColor(self.editorRectColorLB, tonumber(arr[1], 16));
+		CESColorBox.setColor(self.editorRectColorLT, tonumber(arr[2], 16));
+		CESColorBox.setColor(self.editorRectColorRT, tonumber(arr[3], 16));
+		CESColorBox.setColor(self.editorRectColorRB, tonumber(arr[4], 16));
 	end
 end
 
@@ -209,14 +209,13 @@ function C:awake(executorPtr)
 
 	local value = CEntity.getSharedData(entityPtr, self.KEY_COLOR);
 	if value ~= "" then
-		local arr = stringSplit(value, ",");
-		CUVAnimator.setColor(animatorPtr, arr[1], arr[2], arr[3], arr[4]);
+		CUVAnimator.setColor(animatorPtr, tonumber(value, 16));
 	end
 
 	local value = CEntity.getSharedData(entityPtr, self.KEY_RECT_COLOR);
 	if value ~= "" then
-		local arr = stringSplit(value, ",");
-		CUVAnimator.setRectColor(animatorPtr, true, arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10], arr[11], arr[12], arr[13], arr[14], arr[15], arr[16]);
+		local arr = stringSplit(value, ",", self.tmpArr);
+		CUVAnimator.setRectColor(animatorPtr, true, tonumber(arr[1], 16), tonumber(arr[2], 16), tonumber(arr[3], 16), tonumber(arr[4], 16));
 	end
 end
 

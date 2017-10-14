@@ -3,6 +3,7 @@ local C = registerClassAuto(getClass(ITEM_PACKAGE, ITEM_BATTLE_BASE));
 function C:ctor()
 	self.SHOOTING_TIME = SWORD_SHOOTING_TIME;
 	self.INSTRUCTION0_NEED_MP = 10.0;
+	self.actionTag = CGameAction.ACTION_SKILL..SWORD_ACTION_INDEX;
 end
 
 function C:awake(itemPtr)
@@ -44,7 +45,7 @@ function C:_instruction0Handler()
 end
 
 function C:getSkillTag()
-	return CGameAction.ACTION_SKILL..SWORD_ACTION_INDEX;
+	return self.actionTag;
 end
 
 function C:useCondition()
@@ -89,7 +90,7 @@ function C:preBattle(time)
 			CBulletBehaviorController.setPosition(ptr, 0, 0.0, 0.0);
 			CBulletBehaviorController.setFollowOwner(ptr, true);
 			CBulletBehaviorController.setDoneActionChanged(ptr, true);
-			CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
+			CBulletBehaviorController.setDoneNotContainOwnerActionTag(ptr, true, self.actionTag);
 			CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
 			local scPtr = CSoundPackage.create();
 			CSoundPackage.add(scPtr, CGameResource.getCharacterSoundFile(res, "1"));

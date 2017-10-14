@@ -111,13 +111,8 @@ function C:awake(characterDataPtr)
 end
 
 function C:createIdle()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_IDLE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_IDLE);
+	local ptr = createDefaultIdleActionData();
 	CGameActionData.setResName(ptr, "close");
-	CGameActionData.setLoop(ptr, true);
-	CGameActionData.setLock(ptr, false);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 	CGameActionData.setCollisionTag(ptr, CEntityType.PLAYER);
 
 	self:_createAction(ptr);
@@ -126,14 +121,10 @@ function C:createIdle()
 end
 
 function C:createSkill0()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_SKILL.."0");
-	CGameActionData.setTag(ptr, CGameAction.ACTION_SKILL.."0");
+	local ptr = createDefaultSkillActionData("0");
 	CGameActionData.setScriptName(ptr, "TreasureChestOpen", true);
 	CGameActionData.setResName(ptr, "open");
-	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setKeepTime(ptr, 0.0);
-	CGameActionData.setLock(ptr, true);
 
 	self:_createAction(ptr);
 

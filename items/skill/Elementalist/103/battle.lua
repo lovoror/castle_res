@@ -107,7 +107,7 @@ function C:_shot(time)
 	CBulletBehaviorController.setMATFactor(ptr, lv * 1.5, s * 0.5);
 	CBulletBehaviorController.setFireDamageFactor(ptr, lv * 1.2 + mat * s * 0.5, 1.0);
 	--CBulletBehaviorController.setDoneTime(ptr, 2 + (lv - 1) * 0.12);
-	CBulletBehaviorController.setScale(ptr, 1.0 + (lv - 1.0) * 0.1);
+	CBulletBehaviorController.setScale(ptr, 1.0 + (lv - 1.0) * 0.06);
 
 	local uuid = 0;
 	if self.allocUUID ~= 0 then

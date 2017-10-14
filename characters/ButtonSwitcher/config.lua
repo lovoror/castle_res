@@ -32,38 +32,24 @@ function C:awake(characterDataPtr)
 end
 
 function C:createIdle()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_IDLE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_IDLE);
+	local ptr = createDefaultIdleActionData();
 	CGameActionData.setResName(ptr, "idle");
-	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end
 
 function C:createSkill0()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_SKILL.."0");
-	CGameActionData.setTag(ptr, CGameAction.ACTION_SKILL.."0");
+	local ptr = createDefaultSkillActionData("0");
 	CGameActionData.setResName(ptr, "down");
-	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setKeepTime(ptr, 0.0);
-	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end
 
 function C:createSkill1()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_SKILL.."1");
-	CGameActionData.setTag(ptr, CGameAction.ACTION_SKILL.."1");
+	local ptr = createDefaultSkillActionData("1");
 	CGameActionData.setResName(ptr, "up");
-	CGameActionData.setLoop(ptr, false);
-	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 	CGameActionData.setLinkName(ptr, CGameAction.ACTION_IDLE);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);

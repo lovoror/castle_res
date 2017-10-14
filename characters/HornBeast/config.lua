@@ -120,7 +120,7 @@ function C:createSkill0()
 
 	local scPtr = CSoundPackage.create();
 	CSoundPackage.add(scPtr, CGameResource.getCharacterSoundFile(self.id, "skill0_1"));
-	CSoundPackage.setPersistActionTag(scPtr, CGameAction.ACTION_SKILL.."0");
+	CSoundPackage.addPersistActionTag(scPtr, CGameAction.ACTION_SKILL.."0");
 	CGameActionData.addSound(ptr, scPtr);
 end
 
@@ -160,7 +160,7 @@ function C:createSkill10()
 	CSoundPackage.addEmpty(scPtr, 5.0);
 	CSoundPackage.addEmpty(scPtr, 6.0);
 	CSoundPackage.setPlayMode(scPtr, CSoundPackage.PLAY_MODE_CONTINUE);
-	CSoundPackage.setPersistActionTag(scPtr, CGameAction.ACTION_SKILL.."10");
+	CSoundPackage.addPersistActionTag(scPtr, CGameAction.ACTION_SKILL.."10");
 	CGameActionData.addSound(ptr, scPtr);
 end
 

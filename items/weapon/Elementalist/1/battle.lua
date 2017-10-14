@@ -37,9 +37,6 @@ function C:preBattle(time)
 				local itemPtr = self.itemPtr;
 
 				local ptr = CBulletBehaviorController.create();
-				--CBulletBehaviorController.setFollowOwner(ptr, true);
-				--CBulletBehaviorController.setDoneActionChanged(ptr, true);
-				--CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
 				CBulletBehaviorController.setDoneHitCount(ptr, 1);
 				CBulletBehaviorController.setDoneHitBlock(ptr, true, false);
 				CBulletBehaviorController.setVelocity(ptr, 550.0);

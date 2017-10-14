@@ -24,7 +24,7 @@ end
 
 function C:useCondition()
 	if CEntity.isHost(self.entityPtr) and CEntity.getMP(self.entityPtr) >= CItem.getConsumeMP(self.itemPtr) then
-		return CEntity.getPhysicsState(self.entityPtr) ~= CPhysicsState.STAND and CEntity.getCurrentActionTag(self.entityPtr) ~= CGameAction.ACTION_HURT
+		return CEntity.getPhysicsState(self.entityPtr) ~= CPhysicsState.STAND and (not CGameActionTag.hasTagByString(CEntity.getCurrentActionTagPtr(self.entityPtr), CGameAction.ACTION_HURT))
 	else
 		return false;
 	end
@@ -52,7 +52,7 @@ end
 function C:tick(time)
 	if self.isOn then
 		if CEntity.isHost(self.entityPtr) then
-			if (not CItem.isSkillButtonPressing(self.itemPtr)) or CEntity.getPhysicsState(self.entityPtr) == CPhysicsState.STAND or CEntity.getCurrentActionTag(self.entityPtr) == CGameAction.ACTION_HURT or CEntity.isDie(self.entityPtr) then
+			if (not CItem.isSkillButtonPressing(self.itemPtr)) or CEntity.getPhysicsState(self.entityPtr) == CPhysicsState.STAND or CGameActionTag.hasTagByString(CEntity.getCurrentActionTagPtr(self.entityPtr), CGameAction.ACTION_HURT) or CEntity.isDie(self.entityPtr) then
 				self:_setOff();
 			end
 		end
@@ -61,7 +61,7 @@ function C:tick(time)
 			CEntity.setInstantVelocity(self.entityPtr, 0.0, 0.0);
 			CEntity.setResistanceVelocity(self.entityPtr, 0.0, 0.0);
 
-			if CEntity.getCurrentActionTag(self.entityPtr) ~= CGameAction.ACTION_KICK then
+			if not CGameActionTag.hasTagByString(CEntity.getCurrentActionTagPtr(self.entityPtr), CGameAction.ACTION_KICK) then
 				CEntity.setPersistVelocity(self.entityPtr, 0.0, 0.0);
 			end
 		end

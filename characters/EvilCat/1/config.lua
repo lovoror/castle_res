@@ -9,13 +9,9 @@ function C:awake(characterDataPtr)
 end
 
 function C:createIdle()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_IDLE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_IDLE);
+	local ptr = createDefaultIdleActionData();
 	CGameActionData.setScriptName(ptr, "Idle", false);
-	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 	CGameActionData.setRigid(ptr, 0, CRigidAtk.NRM, CRigidDef.LOW);
 	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setCollisionForce(ptr, 0, 200.0, 0.0, 0.0, false, 200.0, 0.0, 0.0, false);

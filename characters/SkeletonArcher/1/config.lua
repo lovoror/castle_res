@@ -11,13 +11,9 @@ function C:awake(characterDataPtr)
 end
 
 function C:createIdle()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_IDLE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_IDLE);
+	local ptr = createDefaultIdleActionData();
 	CGameActionData.setScriptName(ptr, "IdleOrDie", false);
-	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 	CGameActionData.setRigid(ptr, 0, CRigidAtk.NRM, CRigidDef.LOW);
 	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setCollisionForce(ptr, 0, 200.0, 0.0, 0.0, false, 200.0, 0.0, 0.0, false);
@@ -26,12 +22,9 @@ function C:createIdle()
 end
 
 function C:createDie()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_DIE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_DIE);
+	local ptr = createDefaultDieActionData();
 	CGameActionData.setScriptName(ptr, "IdleOrDie", false);
 	CGameActionData.setLoop(ptr, true);
-	CGameActionData.setLock(ptr, true);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end

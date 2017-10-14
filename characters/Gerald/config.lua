@@ -83,17 +83,17 @@ end
 function C:createVeer()
 	local ptr = createDefaultIdleActionData(CGameAction.ACTION_VEER);
 	CGameActionData.setResName(ptr, "zhuanshen");
+	CGameActionData.addTag(ptr, CGameAction.ACTION_IDLE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_RUN);
 	CGameActionData.setLoop(ptr, false);
 	--CGameActionData.setLinkName(ptr, CGameAction.ACTION_IDLE);
 	
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_IDLE);
-
-	local ptr = createDefaultIdleActionData(CGameAction.ACTION_VEER);
-	CGameActionData.setResName(ptr, "zhuanshen");
-	CGameActionData.setLoop(ptr, false);
-	--CGameActionData.setLinkName(ptr, CGameAction.ACTION_RUN);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_IDLE);
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_RUN);
+	CGameActionCondition.addBlackTag(condPtr, CGameAction.ACTION_VEER);
 	
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_RUN);
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 end
 
 function C:createJump()
@@ -165,6 +165,7 @@ function C:createSlideTrackle()
 	local ptr = createDefaultSlideTrackleActionData();
 	CGameActionData.setResName(ptr, "huachan");
 	CGameActionData.setScriptName(ptr, "SlideTrackle", true);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT);
 	--CGameActionData.setSpeed(ptr, 1.8);
 	CGameActionData.setRigid(ptr, 0, CRigidAtk.LOW, CRigidDef.LOW);
 	CGameActionData.setATKFactor(ptr, 0, 0.0, 0.1);
@@ -199,6 +200,7 @@ end
 function C:createLanding()
 	local ptr = createDefaultLandingActionData();
 	CGameActionData.setResName(ptr, "luodi_yingzhi");
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
 end
@@ -207,6 +209,7 @@ function C:createCestus()
 	local ptr = createDefaultSkillActionData(CESTUS_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "zhanli_pugong");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_IDLE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
@@ -214,31 +217,45 @@ function C:createCestus()
 	local ptr = createDefaultSkillActionData(CESTUS_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "xiadun_pugong");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 	--CGameActionData.setKeepTime(ptr, 0.5);
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_SQUAT);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_SQUAT);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 
 	local ptr = createDefaultSkillActionData(CESTUS_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "tiaoyue_pugong");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP_MORE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP);
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP_MORE);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP);
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP_MORE);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 
 	local ptr = createDefaultSkillActionData(CESTUS_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "xialuo_pugong");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_FALL);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_FALL);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_FALL);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 end
 
 function C:createSword()
 	local ptr = createDefaultSkillActionData(SWORD_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "zhanli_gongji");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_IDLE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
@@ -246,30 +263,44 @@ function C:createSword()
 	local ptr = createDefaultSkillActionData(SWORD_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "xiadun_gongji");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 	--CGameActionData.setKeepTime(ptr, 0.5);
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_SQUAT);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_SQUAT);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 
 	local ptr = createDefaultSkillActionData(SWORD_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "tiaoyue_gongji");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP_MORE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP);
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP_MORE);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP);
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP_MORE);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 
 	local ptr = createDefaultSkillActionData(SWORD_ACTION_INDEX);
 	CGameActionData.setResName(ptr, "xialuo_gongji");
 	--CGameActionData.setScriptName(ptr, "Skill0", false);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_FALL);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_FALL);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_FALL);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 end
 
 function C:createSkill1()
 	local ptr = createDefaultSkillActionData("1");
 	CGameActionData.setResName(ptr, "zhanli_gongji");
+	CGameActionData.addTag(ptr, CGameAction.ACTION_IDLE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 	CGameActionData.setSpeed(ptr, 1.5);
 
@@ -277,16 +308,25 @@ function C:createSkill1()
 
 	local ptr = createDefaultSkillActionData("1");
 	CGameActionData.setResName(ptr, "tiaoyue_gongji");
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP_MORE);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP);
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_JUMP_MORE);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP);
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_JUMP_MORE);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 
 	local ptr = createDefaultSkillActionData("1");
 	CGameActionData.setResName(ptr, "xialuo_gongji");
+	CGameActionData.addTag(ptr, CGameAction.ACTION_FALL);
 	CGameActionData.addSound(ptr, self:_createAtkSoundConfig());
 
-	CCharacterData.setActionData(self.characterDataPtr, ptr, CGameAction.ACTION_FALL);
+	local condPtr = CGameActionCondition.create();
+	CGameActionCondition.addWhiteOrTag(condPtr, CGameAction.ACTION_FALL);
+
+	CCharacterData.setActionData(self.characterDataPtr, ptr, condPtr);
 end
 
 function C:createHurt()

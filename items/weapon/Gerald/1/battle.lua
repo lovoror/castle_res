@@ -2,6 +2,7 @@ local C = registerClassAuto(getClass(ITEM_PACKAGE, ITEM_BATTLE_BASE));
 
 function C:ctor()
 	self.SHOOTING_TIME = CESTUS_SHOOTING_TIME;
+	self.actionTag = CGameAction.ACTION_SKILL..CESTUS_ACTION_INDEX;
 end
 
 function C:awake(itemPtr)
@@ -13,7 +14,7 @@ function C:awake(itemPtr)
 end
 
 function C:getSkillTag()
-	return CGameAction.ACTION_SKILL..CESTUS_ACTION_INDEX;
+	return self.actionTag;
 end
 
 function C:useCondition()
@@ -41,7 +42,7 @@ function C:preBattle(time)
 				CBulletBehaviorController.setPosition(ptr, 0);
 				CBulletBehaviorController.setFollowOwner(ptr, true);
 				CBulletBehaviorController.setDoneTime(ptr, 1.0);
-				CBulletBehaviorController.setDoneOwnerActionChanged(ptr, true);
+				CBulletBehaviorController.setDoneNotContainOwnerActionTag(ptr, true, self.actionTag);
 
 				CBulletBehaviorController.setATKFactor(ptr, 0.0, 0.4);
 				CBulletBehaviorController.setMATFactor(ptr, 0.0, 0.0);

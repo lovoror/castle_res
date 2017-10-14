@@ -57,13 +57,14 @@ function C:isDone(result)
 	end
 end
 
-function C:isCancel(tag, itemPtr)
-	if tag == CGameAction.ACTION_JUMP then
+function C:isCancel(tagPtr, itemPtr)
+	Clog(CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_JUMP));
+	if CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_JUMP) then
 		return true;
 	end
 
 	if (self.curDis >= self.UNLOCK_DIS) or (self.curTime >= self.UNLOCK_TIME) then
-		if tag == CGameAction.ACTION_RUN then
+		if CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_RUN) then
 			return true;
 		else
 			return false;

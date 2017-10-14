@@ -5,20 +5,21 @@ function C:ctor()
 end
 
 function C:suffering(attackDataPtr)
-	return CCollisionResult.DAMAGE_INVALID;
-end
-
-function C:attacked(attackDataPtr)
-	self:_setDie(CAttackData.getSufferPtr(attackDataPtr));
-end
-
-function C:suffered(attackDataPtr)
 	if CAttackData.getValue(attackDataPtr) <= 0 and CAttackData.getType(attackDataPtr) == CBattleNumberType.HP then
 		self:_setDie(CAttackData.getAttackerPtr(attackDataPtr));
 	end
+
+	return CCollisionResult.DAMAGE_INVALID;
+end
+
+function C:attacking(attackDataPtr)
+	self:_setDie(CAttackData.getSufferPtr(attackDataPtr));
+
+	return CCollisionResult.DAMAGE_INVALID;
 end
 
 function C:_setDie(targetPtr)
+	Clog("wefwegewgwe");
 	CEntity.setDie(self.entityPtr);
 
 	if CChapterScene.isNetwork() then

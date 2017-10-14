@@ -56,7 +56,7 @@ function C:isDone(result)
 end
 
 --tag:string
-function C:isCancel(tag, itemPtr)
+function C:isCancel(tagPtr, itemPtr)
 	return false;
 end
 

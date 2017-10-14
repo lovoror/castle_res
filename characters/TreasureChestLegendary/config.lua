@@ -57,7 +57,7 @@ function C:createCreate()
 end
 
 function C:_createAction(actionDataPtr)
-	if CGameActionData.getTag(actionDataPtr) == CGameAction.ACTION_IDLE then
+	if CGameActionTag.hasTagByString(CGameActionData.getTagPtr(actionDataPtr), CGameAction.ACTION_IDLE) then
 		CGameActionData.setScriptName(actionDataPtr, "Idle");
 	end
 end

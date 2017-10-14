@@ -19,7 +19,7 @@ function C:awake(actionPtr)
 
 	CGameAction.setUpdateBodyShapeEnabled(actionPtr, false);
 
-	self.isDie = CGameActionData.getTag(CGameAction.getActionDataPtr(actionPtr)) == CGameAction.ACTION_DIE;
+	self.isDie = CGameActionTag.hasTagByString(CGameActionData.getTagPtr(CGameAction.getActionDataPtr(actionPtr)), CGameAction.ACTION_DIE);
 	self.delayDie = false;
 	self.curDieTime = 0.0;
 	self.dieStep = 0;

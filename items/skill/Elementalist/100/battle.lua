@@ -99,7 +99,7 @@ function C:_shot(time)
 	local s = 1.0 + (lv - 1.0) * 0.1;
 	CBulletBehaviorController.setMATFactor(ptr, lv * 1.0, s * 0.5);
 	CBulletBehaviorController.setIceDamageFactor(ptr, lv * 1.0 + mat * s * 0.5, 1.0);
-	CBulletBehaviorController.setScale(ptr, 0.8 + (lv - 1) * 0.08);
+	CBulletBehaviorController.setScale(ptr, 0.8 + (lv - 1) * 0.05);
 
 	CBullet.createBullet(CItem.getRes(itemPtr), entityPtr, ptr, itemPtr);
 end

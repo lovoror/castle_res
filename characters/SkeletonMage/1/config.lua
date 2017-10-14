@@ -24,13 +24,9 @@ function C:damage(attackDataPtr)
 end
 
 function C:createIdle()
-	local ptr = CGameActionData.create();
-	CGameActionData.setName(ptr, CGameAction.ACTION_IDLE);
-	CGameActionData.setTag(ptr, CGameAction.ACTION_IDLE);
+	local ptr = createDefaultIdleActionData();
 	CGameActionData.setScriptName(ptr, "Idle");
-	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setCollisionCamp(ptr, false, true);
 	setActionDataDefaultBattleData(ptr, 0);
 	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setElectricityDamageFactor(ptr, 0, 0.0, 1.0);
