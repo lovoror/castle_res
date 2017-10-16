@@ -61,7 +61,7 @@ function C:tick(time)
 
 			local ptr = CBulletBehaviorController.create();
 			CBulletBehaviorController.setStartTime(ptr, t);
-			CBulletBehaviorController.setMotionEnabledAction(ptr, CGameAction.ACTION_SKILL.."0");
+			CBulletBehaviorController.setMotionEnabledActionTag(ptr, CGameAction.ACTION_SKILL.."0");
 			CBulletBehaviorController.setFollowOwner(ptr, false);
 			CBulletBehaviorController.setDoneHitBlock(ptr, true, true);
 			CBulletBehaviorController.setDoneOverstepWorld(ptr, true);

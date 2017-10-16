@@ -50,8 +50,8 @@ MAGIC_WEAPON_ACTION_INDEX = "7";
 
 CESTUS_SHOOTING_TIME = 0.13;
 SWORD_SHOOTING_TIME = 0.2;
-MAGIC_SHOOTING_TIME = 0.07;
-MAGIC_WEAPON_SHOOTING_TIME = 0.07;
+MAGIC_SHOOTING_TIME = 0.09;
+MAGIC_WEAPON_SHOOTING_TIME = 0.09;
 
 math.randomseed(os.time());
 
@@ -323,7 +323,7 @@ end
 function createDefaultCreateActionData(name, tag)
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_CREATE);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_CREATE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_CREATE, true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
 	CGameActionData.setLinkName(ptr, CGameAction.ACTION_IDLE);
@@ -350,7 +350,7 @@ function createDefaultIdleActionData(name, tag)
 
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, name);
-	CGameActionData.addTag(ptr, tag);
+	CGameActionData.addTag(ptr, tag, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportKick(ptr, false, false);
@@ -371,7 +371,7 @@ function createDefaultRunActionData(name, tag)
 
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, name);
-	CGameActionData.addTag(ptr, tag);
+	CGameActionData.addTag(ptr, tag, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportKick(ptr, false, false);
@@ -385,7 +385,7 @@ end
 function createDefaultJumpActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_JUMP);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportDodge(ptr, false, false);
@@ -398,7 +398,7 @@ end
 function createDefaultJumpMoreActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_JUMP_MORE);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP_MORE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_JUMP_MORE, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportDodge(ptr, false, false);
@@ -411,7 +411,7 @@ end
 function createDefaultFallActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_FALL);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_FALL);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_FALL, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportDodge(ptr, false, false);
@@ -424,7 +424,7 @@ end
 function createDefaultKickActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_KICK);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_KICK);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_KICK, true);
 	CGameActionData.setScriptName(ptr, "Kick", true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
@@ -446,7 +446,7 @@ end
 function createDefaultSlideTrackleActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_SLIDE_TACKLE);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_SLIDE_TACKLE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SLIDE_TACKLE, true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
 	CGameActionData.setSupportRun(ptr, false, false);
@@ -468,7 +468,7 @@ end
 function createDefaultDodgeActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_DODGE);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_DODGE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_DODGE, true);
 	CGameActionData.setScriptName(ptr, "BackwardDodge", true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, true);
@@ -488,7 +488,7 @@ end
 function createDefaultSquatActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_SQUAT);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SQUAT, true);
 	CGameActionData.setLoop(ptr, true);
 	CGameActionData.setLock(ptr, false);
 	CGameActionData.setSupportRun(ptr, false, false);
@@ -504,7 +504,7 @@ end
 function createDefaultLandingActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_LANDING);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_LANDING);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_LANDING, true);
 	CGameActionData.setScriptName(ptr, "Landing", true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
@@ -526,7 +526,7 @@ function createDefaultSkillActionData(index, name)
 
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_SKILL..name);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_SKILL..index);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_SKILL..index, true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
 	CGameActionData.setSupportRun(ptr, false, true);
@@ -544,7 +544,7 @@ end
 function createDefaultHurtActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_HURT);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_HURT);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_HURT, true);
 	CGameActionData.setScriptName(ptr, "Hurt", true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
@@ -561,7 +561,7 @@ end
 function createDefaultDieActionData()
 	local ptr = CGameActionData.create();
 	CGameActionData.setName(ptr, CGameAction.ACTION_DIE);
-	CGameActionData.addTag(ptr, CGameAction.ACTION_DIE);
+	CGameActionData.addTag(ptr, CGameAction.ACTION_DIE, true);
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
 	CGameActionData.setSupportRun(ptr, false, false);

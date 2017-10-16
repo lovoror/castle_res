@@ -88,7 +88,7 @@ function C:_shot(time)
 	CBulletBehaviorController.setVelocity(ptr, 0.0);
 	CBulletBehaviorController.setGravityScale(ptr, 0.0, 0.0);
 	CBulletBehaviorController.setFixedMoveableDirection(ptr, true);
-	CBulletBehaviorController.setMotionEnabledAction(ptr, CGameAction.ACTION_SKILL.."0");
+	CBulletBehaviorController.setMotionEnabledActionTag(ptr, CGameAction.ACTION_SKILL.."0");
 	--CBulletBehaviorController.setAngle(ptr, 30, true);
 
 	local lv = CItem.getLevel(itemPtr) ;

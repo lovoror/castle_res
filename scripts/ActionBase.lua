@@ -44,6 +44,9 @@ end
 function C:tick(time)
 end
 
+function C:tileMapTicked(time)
+end
+
 function C:finish()
 end
 
