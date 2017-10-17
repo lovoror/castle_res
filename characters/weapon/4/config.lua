@@ -18,7 +18,7 @@ function C:createIdle()
 	CGameActionData.setResName(ptr, "J");
 	CGameActionData.setLoop(ptr, false);
 	CGameActionData.setLock(ptr, true);
-	CGameActionData.setSpeed(ptr, 0.6);
+	--CGameActionData.setSpeed(ptr, 0.6);
 	CGameActionData.setRigid(ptr, 0, CRigidAtk.LOW, CRigidDef.LOW);
 	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setCollisionForce(ptr, 0, 200.0, 0.0, 0.0, false, 200.0, 0.0, 0.0, false);

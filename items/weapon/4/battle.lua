@@ -1,7 +1,7 @@
 local C = registerClassAuto(getClass(ITEM_PACKAGE, ITEM_BATTLE_BASE));
 
 function C:ctor()
-	self.SHOOTING_TIME = SWORD_SHOOTING_TIME;
+	self.SHOOTING_TIME = 0.134;
 	self.INSTRUCTION0_NEED_MP = 10.0;
 	self.actionTag = CGameAction.ACTION_SKILL..SWORD_ACTION_INDEX;
 end
