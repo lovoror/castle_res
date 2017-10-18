@@ -32,6 +32,7 @@ function C:createSkill0()
 	CGameActionData.setResName(ptr, "JQ");
 	CGameActionData.setSpeed(ptr, 0.4);
 	CGameActionData.setLoop(ptr, true);
+	CGameActionData.setLandingDone(ptr, false);
 	CGameActionData.setRigid(ptr, 0, CRigidAtk.LOW, CRigidDef.LOW);
 	CGameActionData.setCollisionBehavior(ptr, CCollisionBehavior.DAMAGE);
 	CGameActionData.setCollisionForce(ptr, 0, 200.0, 0.0, 0.0, false, 200.0, 0.0, 0.0, false);

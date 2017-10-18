@@ -1,4 +1,4 @@
---Skeleton
+--Zombie
 local C = registerClassAuto(getClass(AI_PACKAGE, AI_CLASSIC));
 
 function C:_createSkills()
@@ -22,4 +22,26 @@ function C:_createSkills()
 
 	CAITaskBase.setWeight(trackTaskPtr, 0.5);
 	self:_createSkill(0, 5, 0, 0, rangeCondPtr, attackGroupTaskPtr, trackTaskPtr);
+
+	self:_setRndSndCurDelay();
+end
+
+function C:tick(time)
+	super.tick(self, time);
+
+	local tagPtr = CEntity.getCurrentActionTagPtr(self.entityPtr);
+	if CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_IDLE, true) or CGameActionTag.hasTagByString(tagPtr, CGameAction.ACTION_RUN, true) then
+		self.rndSndCurTime = self.rndSndCurTime + time;
+		
+		if self.rndSndCurTime >= self.rndSndCurDelay then
+			self:_setRndSndCurDelay();
+			
+			CEntity.playSelfSound(self.entityPtr, "rnd", 1.0, true);
+		end
+	end
+end
+
+function C:_setRndSndCurDelay()
+	self.rndSndCurDelay = 6.0 + math.random() * 5.0;
+	self.rndSndCurTime = 0.0;
 end

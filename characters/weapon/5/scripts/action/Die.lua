@@ -61,7 +61,14 @@ function C:_init()
 
 	CGameNode.setRotation(self.symbolPtr, tonumber(CEntity.getSharedData(entityPtr, "rotation")));
 
-	CEntity.playSound(entityPtr, CGameResource.getCharacterSoundFile(id, "die"), 0.5);
+	local snd;
+	local value = CEntity.getSharedData(entityPtr, "atk");
+	if value == "1" then
+		snd = "atk";
+	else
+		snd = "die";
+	end
+	CEntity.playSelfSound(entityPtr, snd, 0.5);
 end
 
 function C:tick(time)

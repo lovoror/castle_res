@@ -4,6 +4,7 @@ function C:awake(characterDataPtr)
 	super.awake(self, characterDataPtr);
 
 	CCharacterData.setCustomSync(characterDataPtr, true);
+	CCharacterData.setCamp(characterDataPtr, CCampType.UNDEFINED, CCampType.MONSTER);
 	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Crack");
 	CCharacterData.loadCharacterData(characterDataPtr, "@(self)/Dust");
 

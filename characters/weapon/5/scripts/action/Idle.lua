@@ -19,6 +19,11 @@ function C:awake(actionPtr)
 	self.collW = nil;
 end
 
+function C:attacked(attackDataPtr)
+	CEntity.setSharedData(self.entityPtr, "atk", "1");
+	CEntity.setDie(self.entityPtr);
+end
+
 function C:start(itemPtr)
 	self.tickOk = false;
 
@@ -50,7 +55,7 @@ function C:_init()
 
 	local entityPtr = self.entityPtr;
 
-	CEntity.playSound(entityPtr, CGameResource.getCharacterSoundFile(CCharacterData.getName(CEntity.getCharacterDataPtr(entityPtr)), tostring(toint(self.number) + 1)), 0.5);
+	CEntity.playSelfSound(entityPtr, tostring(toint(self.number) + 1), 0.5);
 end
 
 function C:tick(time)

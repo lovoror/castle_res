@@ -17,7 +17,6 @@ function C:tileMapTicked(time)
 
 	if CEntity.getPhysicsState(self.entityPtr) == CPhysicsState.STAND then
 		local x, y = CEntity.getStandVector(self.entityPtr);
-		Clog(tostring(x).."  "..tostring(y));
 		if y < 0.0 and x ~= 0.0 then
 			r = math.deg(math.atan(-x, -y));
 			if CEntity.getDirection(self.entityPtr) == CDirection.LEFT then

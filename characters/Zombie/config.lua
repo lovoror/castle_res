@@ -5,6 +5,13 @@ function C:awake(characterDataPtr)
 
 	CCharacterData.setGlobalCollisionCycle(characterDataPtr, 1.0);
 
+	CCharacterData.loadSound(characterDataPtr, "atk", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "hurt", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "die", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "rnd", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+
+	self.id = CCharacterData.getName(characterDataPtr);
+
 	self:createIdle();
 	self:createRun();
 	self:createFall();
@@ -16,6 +23,12 @@ end
 
 function C:injured(attackDataPtr)
 	setDefaultInjuredEffect(attackDataPtr);
+
+	if math.random() < 0.2 then
+		local chPtr = CAudioManager.playByName(CGameResource.getCharacterSoundFile(self.id, "hurt"), true);
+		CAudioManager.set3DAttributes(chPtr, x, y);
+		CAudioManager.setPaused(chPtr, false);
+	end
 
 	return true;
 end
@@ -67,6 +80,11 @@ function C:createSkill0()
 	CGameActionData.setATKFactor(ptr, 1, 0.0, 1.5);
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
+
+	local scPtr = CSoundPackage.create();
+	CSoundPackage.setTime(scPtr, 0.83);
+	CSoundPackage.add(scPtr, CGameResource.getCharacterSoundFile(self.id, "atk"));
+	CGameActionData.addSound(ptr, scPtr);
 end
 
 function C:createHurt()
@@ -82,4 +100,9 @@ function C:createDie()
 	CGameActionData.setResName(ptr, "siwang");
 
 	CCharacterData.setActionData(self.characterDataPtr, ptr);
+
+	local scPtr = CSoundPackage.create();
+	CSoundPackage.setTime(scPtr, 0.2);
+	CSoundPackage.add(scPtr, CGameResource.getCharacterSoundFile(self.id, "die"));
+	CGameActionData.addSound(ptr, scPtr);
 end

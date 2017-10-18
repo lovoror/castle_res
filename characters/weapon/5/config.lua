@@ -10,6 +10,7 @@ function C:awake(characterDataPtr)
 		CCharacterData.loadSound(characterDataPtr, tostring(i), SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
 	end
 	CCharacterData.loadSound(characterDataPtr, "die", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
+	CCharacterData.loadSound(characterDataPtr, "atk", SOUND_3D_DEFAULT_MIN_DISTANCE, SOUND_3D_DEFAULT_MAX_DISTANCE);
 
 	self.id= CCharacterData.getName(characterDataPtr);
 

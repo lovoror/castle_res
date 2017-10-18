@@ -1,11 +1,13 @@
 local C = registerClassAuto(getClass(ACTION_PACKAGE, ACTION_BASE));
 
-function C:attacked(attackDataPtr)
+function C:attacking(attackDataPtr)
 	CEntity.setDie(self.entityPtr);
+	return 0;
 end
 
-function C:suffered(attackDataPtr)
+function C:suffering(attackDataPtr)
 	CEntity.setDie(self.entityPtr);
+	return 0;
 end
 
 function C:start(itemPtr)

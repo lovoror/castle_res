@@ -58,7 +58,7 @@ function C:preBattle(time)
 				--CBulletBehaviorController.setAlphaDodge(ptr, 0.6);
 				CBulletBehaviorController.setDoneTime(ptr, 0.8);
 				CBulletBehaviorController.setDoneHitBlock(ptr, true, false);
-				CBulletBehaviorController.setDoneHitCount(ptr, 1);
+				--CBulletBehaviorController.setDoneHitCount(ptr, 1);
 				CBulletBehaviorController.setVelocity(ptr, 240.0);
 				CBulletBehaviorController.setAcceleration(ptr, true, -200.0, true, 0.0, false, 0.0);
 				CBulletBehaviorController.setGravityScale(ptr, 0.0, 0.0);
